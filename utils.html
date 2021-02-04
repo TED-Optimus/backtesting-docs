@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>utils package &#8212; TED Optimus - backtesting  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="utils" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="utils-package">
+<h1>utils package<a class="headerlink" href="#utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-utils.data">
+<span id="utils-data-module"></span><h2>utils.data module<a class="headerlink" href="#module-utils.data" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="utils.data.Universe">
+<em class="property">class </em><code class="sig-prename descclassname">utils.data.</code><code class="sig-name descname">Universe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selection</span><span class="p">:</span> <span class="n">utils.selection.UniverseSelection</span></em>, <em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">includes</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>utils.selection.Indicators<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">full</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">auto_run</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.data.Universe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">utils.api_key.ApiKey</span></code></p>
+<p><strong>Generate an Universe for backtesting</strong></p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">UniverseSelection</span><span class="o">.</span><span class="n">STOCKS</span><span class="p">,</span>
+            <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;your api key here!&#39;</span><span class="p">,</span>
+            <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="n">Indicators</span><span class="o">.</span><span class="n">SMA</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MACD</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MOMENTUM</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span> <span class="c1"># output to dataframe</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="utils.data.Universe.check_for_update">
+<code class="sig-name descname">check_for_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.data.Universe.check_for_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match data with server and sync if necessary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.data.Universe.sync_with_server">
+<code class="sig-name descname">sync_with_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#utils.data.Universe.sync_with_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update local data if out of sync</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.data.Universe.to_df">
+<code class="sig-name descname">to_df</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#utils.data.Universe.to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert Universe to a DataFrame</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils.portfolio">
+<span id="utils-portfolio-module"></span><h2>utils.portfolio module<a class="headerlink" href="#module-utils.portfolio" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="utils.portfolio.Portfolio">
+<em class="property">class </em><code class="sig-prename descclassname">utils.portfolio.</code><code class="sig-name descname">Portfolio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position_sizing</span><span class="p">:</span> <span class="n">utils.selection.PositionSizing</span></em>, <em class="sig-param"><span class="n">initial_capital</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">10</span></em>, <em class="sig-param"><span class="n">cut_loss</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.08</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.portfolio.Portfolio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Constructs a Portfolio</p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">position_sizing</span><span class="o">=</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span>
+                        <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+                        <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                        <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.allocation">
+<code class="sig-name descname">allocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#utils.portfolio.Portfolio.allocation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Capital allocated for transactions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Capital allocated</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.buy">
+<code class="sig-name descname">buy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticker</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">price</span></em>, <em class="sig-param"><span class="n">allocation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.portfolio.Portfolio.buy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a buy transaction. If successful ticker will be added into portfolio and added into transaction list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ticker</strong> – ticker symbol</p></li>
+<li><p><strong>date</strong> – order date</p></li>
+<li><p><strong>price</strong> – order price</p></li>
+<li><p><strong>allocation</strong> – capital allocated for this ticker</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.free">
+<code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#utils.portfolio.Portfolio.free" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slots available in portfolio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Free slot in portfolio</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.holding">
+<code class="sig-name descname">holding</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Dict<span class="p">]</span><a class="headerlink" href="#utils.portfolio.Portfolio.holding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Portfolio holding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of portfolio holdings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.list">
+<code class="sig-name descname">list</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>str<span class="p">]</span><a class="headerlink" href="#utils.portfolio.Portfolio.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Portfolio holding ticker list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of portfolio holdings’ ticker list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="utils.portfolio.Portfolio.sell">
+<code class="sig-name descname">sell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticker</span></em>, <em class="sig-param"><span class="n">reason</span></em>, <em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">price</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.portfolio.Portfolio.sell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sell transaction. If successful ticker will be removed from portfolio and added into transaction list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ticker</strong> – ticker symbol</p></li>
+<li><p><strong>reason</strong> – reason for selling</p></li>
+<li><p><strong>date</strong> – order date</p></li>
+<li><p><strong>price</strong> – order price</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils.storage">
+<span id="utils-storage-module"></span><h2>utils.storage module<a class="headerlink" href="#module-utils.storage" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="utils.storage.Storage">
+<em class="property">class </em><code class="sig-prename descclassname">utils.storage.</code><code class="sig-name descname">Storage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.storage.Storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Save object as Pickle.</strong></p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">storage</span> <span class="o">=</span> <span class="n">Storage</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">save_obj</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">storage</span><span class="o">.</span><span class="n">load_obj</span><span class="p">())</span> <span class="c1"># 1</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="utils.storage.Storage.load_obj">
+<code class="sig-name descname">load_obj</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#utils.storage.Storage.load_obj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="utils.storage.Storage.save_obj">
+<code class="sig-name descname">save_obj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span><a class="headerlink" href="#utils.storage.Storage.save_obj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">TED Optimus - backtesting</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">utils</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">utils</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">utils</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, TED Optimus.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

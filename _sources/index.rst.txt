@@ -1,0 +1,48 @@
+.. TED Optimus - backtesting documentation master file, created by
+   sphinx-quickstart on Thu Feb  4 17:50:51 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to TED Optimus - backtesting's documentation!
+=====================================================
+
+Usage:
+
+.. code-block:: python
+
+    df = Universe(selection=UniverseSelection.STOCKS, api_key='07f5b220bf4c933f41',
+                  includes=[Indicators.SMA, Indicators.MACD, Indicators.MOMENTUM])
+    df = df.to_df()
+    df['sell_signal'] = np.where(df['MACDdiff_10_20_7'] < 0, 1, 0)
+    df['buy_signal'] = np.where(
+        (df['close'] >= 0.2) & (df['volume'] >= 100000) & (df['MACDdiff_10_20_7'] >= 0) & (df['MACD_10_20_7'] >= 0) & (
+                df['MACDsign_10_20_7'] >= 0) & (df['sell_signal'] == 0), df['momentum'].values, 0)
+    df['buy_signal'] = df['buy_signal'].fillna(0)
+    portfolio = Portfolio(PositionSizing.EQUAL_UNIT, 100000)
+    for (index, dataframe) in tqdm(df.groupby('date')):
+        frame = dataframe.copy()
+        frame.set_index('ticker', inplace=True)
+        for ticker, info in portfolio.holding():
+            if frame.loc[ticker, 'low'] <= info['cut_loss']:
+                portfolio.sell(ticker, "cut loss", index, info['cut_loss'])
+            elif frame.loc[ticker, 'sell_signal'] == 1:
+                portfolio.sell(ticker, 'exit', index, frame.loc[ticker, 'close'])
+        frame = frame.loc[(frame['buy_signal'] != 0) & (~frame.index.isin(portfolio.list()))].copy().sort_values(
+            'buy_signal', ascending=False)
+        allocation = portfolio.allocation()
+        for item in frame[:portfolio.free()].index.to_list():
+            portfolio.buy(item, index, frame.loc[item, 'close'], allocation)
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   modules
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
