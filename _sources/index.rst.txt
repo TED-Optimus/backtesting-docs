@@ -9,6 +9,7 @@ Welcome to TED Optimus - backtesting's documentation!
 Usage:
 
 .. code-block:: python
+   :linenos:
 
     df = Universe(selection=UniverseSelection.STOCKS, api_key='07f5b220bf4c933f41',
                   includes=[Indicators.SMA, Indicators.MACD, Indicators.MOMENTUM])
@@ -34,15 +35,7 @@ Usage:
             portfolio.buy(item, index, frame.loc[item, 'close'], allocation)
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
    :caption: Contents:
 
-   modules
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   optimus
