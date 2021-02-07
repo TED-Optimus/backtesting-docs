@@ -1,0 +1,18 @@
+optimus package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   optimus.backtesting
+
+Module contents
+---------------
+
+.. automodule:: optimus
+   :members:
+   :undoc-members:
+   :show-inheritance:

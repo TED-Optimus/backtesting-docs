@@ -1,0 +1,61 @@
+backtesting package
+===================
+
+Submodules
+----------
+
+backtesting.api\_key module
+---------------------------
+
+.. automodule:: backtesting.api_key
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+backtesting.data module
+-----------------------
+
+.. automodule:: backtesting.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+backtesting.performance module
+------------------------------
+
+.. automodule:: backtesting.performance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+backtesting.portfolio module
+----------------------------
+
+.. automodule:: backtesting.portfolio
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+backtesting.selection module
+----------------------------
+
+.. automodule:: backtesting.selection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+backtesting.technical\_analysis module
+--------------------------------------
+
+.. automodule:: backtesting.technical_analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: backtesting
+   :members:
+   :undoc-members:
+   :show-inheritance:

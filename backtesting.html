@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>backtesting package &#8212; TED Optimus - backtesting  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="optimus" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="backtesting-package">
+<h1>backtesting package<a class="headerlink" href="#backtesting-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-backtesting.api_key">
+<span id="backtesting-api-key-module"></span><h2>backtesting.api_key module<a class="headerlink" href="#module-backtesting.api_key" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="backtesting.api_key.ApiKey">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.api_key.</code><code class="sig-name descname">ApiKey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.api_key.ApiKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="backtesting-data-module">
+<h2>backtesting.data module<a class="headerlink" href="#backtesting-data-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="backtesting-performance-module">
+<h2>backtesting.performance module<a class="headerlink" href="#backtesting-performance-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="backtesting-portfolio-module">
+<h2>backtesting.portfolio module<a class="headerlink" href="#backtesting-portfolio-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-backtesting.selection">
+<span id="backtesting-selection-module"></span><h2>backtesting.selection module<a class="headerlink" href="#module-backtesting.selection" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="backtesting.selection.Action">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.selection.</code><code class="sig-name descname">Action</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.selection.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="backtesting.selection.Action.BUY">
+<code class="sig-name descname">BUY</code><em class="property"> = 1</em><a class="headerlink" href="#backtesting.selection.Action.BUY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Action.SELL">
+<code class="sig-name descname">SELL</code><em class="property"> = 2</em><a class="headerlink" href="#backtesting.selection.Action.SELL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="backtesting.selection.Indicators">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.selection.</code><code class="sig-name descname">Indicators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.selection.Indicators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.BB">
+<code class="sig-name descname">BB</code><em class="property"> = 4</em><a class="headerlink" href="#backtesting.selection.Indicators.BB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.EMA">
+<code class="sig-name descname">EMA</code><em class="property"> = 3</em><a class="headerlink" href="#backtesting.selection.Indicators.EMA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.KELTNER">
+<code class="sig-name descname">KELTNER</code><em class="property"> = 10</em><a class="headerlink" href="#backtesting.selection.Indicators.KELTNER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.MACD">
+<code class="sig-name descname">MACD</code><em class="property"> = 6</em><a class="headerlink" href="#backtesting.selection.Indicators.MACD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.MOMENTUM">
+<code class="sig-name descname">MOMENTUM</code><em class="property"> = 8</em><a class="headerlink" href="#backtesting.selection.Indicators.MOMENTUM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.PIVOT">
+<code class="sig-name descname">PIVOT</code><em class="property"> = 7</em><a class="headerlink" href="#backtesting.selection.Indicators.PIVOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.RSI">
+<code class="sig-name descname">RSI</code><em class="property"> = 9</em><a class="headerlink" href="#backtesting.selection.Indicators.RSI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.SMA">
+<code class="sig-name descname">SMA</code><em class="property"> = 2</em><a class="headerlink" href="#backtesting.selection.Indicators.SMA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.STOCHASTIC">
+<code class="sig-name descname">STOCHASTIC</code><em class="property"> = 5</em><a class="headerlink" href="#backtesting.selection.Indicators.STOCHASTIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Indicators.VOLUME_MA">
+<code class="sig-name descname">VOLUME_MA</code><em class="property"> = 1</em><a class="headerlink" href="#backtesting.selection.Indicators.VOLUME_MA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="backtesting.selection.PositionSizing">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.selection.</code><code class="sig-name descname">PositionSizing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.selection.PositionSizing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="backtesting.selection.PositionSizing.EQUAL_UNIT">
+<code class="sig-name descname">EQUAL_UNIT</code><em class="property"> = 1</em><a class="headerlink" href="#backtesting.selection.PositionSizing.EQUAL_UNIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="backtesting.selection.Reason">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.selection.</code><code class="sig-name descname">Reason</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.selection.Reason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="backtesting.selection.Reason.CL">
+<code class="sig-name descname">CL</code><em class="property"> = 3</em><a class="headerlink" href="#backtesting.selection.Reason.CL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Reason.ENTRY">
+<code class="sig-name descname">ENTRY</code><em class="property"> = 1</em><a class="headerlink" href="#backtesting.selection.Reason.ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.Reason.EXIT">
+<code class="sig-name descname">EXIT</code><em class="property"> = 2</em><a class="headerlink" href="#backtesting.selection.Reason.EXIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="backtesting.selection.UniverseSelection">
+<em class="property">class </em><code class="sig-prename descclassname">backtesting.selection.</code><code class="sig-name descname">UniverseSelection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#backtesting.selection.UniverseSelection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="backtesting.selection.UniverseSelection.STOCKS">
+<code class="sig-name descname">STOCKS</code><em class="property"> = 1</em><a class="headerlink" href="#backtesting.selection.UniverseSelection.STOCKS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="backtesting.selection.UniverseSelection.WARRANTS">
+<code class="sig-name descname">WARRANTS</code><em class="property"> = 2</em><a class="headerlink" href="#backtesting.selection.UniverseSelection.WARRANTS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="backtesting-technical-analysis-module">
+<h2>backtesting.technical_analysis module<a class="headerlink" href="#backtesting-technical-analysis-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-backtesting">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-backtesting" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">TED Optimus - backtesting</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">optimus</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">backtesting package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">optimus</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">optimus</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, TED Optimus.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/backtesting.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

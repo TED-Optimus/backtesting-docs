@@ -1,0 +1,45 @@
+optimus.backtesting package
+===========================
+
+Submodules
+----------
+
+optimus.backtesting.data module
+-------------------------------
+
+.. automodule:: optimus.backtesting.data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+optimus.backtesting.performance module
+--------------------------------------
+
+.. automodule:: optimus.backtesting.performance
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+optimus.backtesting.portfolio module
+------------------------------------
+
+.. automodule:: optimus.backtesting.portfolio
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+optimus.backtesting.selection module
+------------------------------------
+
+.. automodule:: optimus.backtesting.selection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: optimus.backtesting
+   :members:
+   :undoc-members:
+   :show-inheritance:
