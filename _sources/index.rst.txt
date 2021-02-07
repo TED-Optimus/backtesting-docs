@@ -11,7 +11,7 @@ Usage:
 .. code-block:: python
    :linenos:
 
-    df = Universe(selection=UniverseSelection.STOCKS, api_key='07f5b220bf4c933f41',
+    df = Universe(selection=UniverseSelection.STOCKS, api_key='your api key here',
                   includes=[Indicators.SMA, Indicators.MACD, Indicators.MOMENTUM])
     df = df.to_df()
     df['sell_signal'] = np.where(df['MACDdiff_10_20_7'] < 0, 1, 0)  # exit signal
