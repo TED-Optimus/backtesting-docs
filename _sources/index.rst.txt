@@ -6,40 +6,102 @@
 Welcome to TED Optimus - backtesting's documentation!
 =====================================================
 
-Usage:
+Indicator Usage:
 
 .. code-block:: python
    :linenos:
 
-    df = Universe(selection=UniverseSelection.STOCKS, api_key='your api key here',
-                  includes=[Indicators.SMA, Indicators.MACD, Indicators.MOMENTUM])
-    df = df.to_df()
-    df['sell_signal'] = np.where(df['MACDdiff_10_20_7'] < 0, 1, 0)  # exit signal
-    df['buy_signal'] = np.where(
-        (df['close'] >= 0.2) & (df['volume'] >= 100000) & (df['MACDdiff_10_20_7'] >= 0) & (df['MACD_10_20_7'] >= 0) & (
-                df['MACDsign_10_20_7'] >= 0) & (df['sell_signal'] == 0), df['momentum'].values, 0)
-    df['buy_signal'] = df['buy_signal'].fillna(0)
+   from optimus.backtesting.indicator import Indicator
 
-    # Init portfolio here
-    portfolio = Portfolio(PositionSizing.EQUAL_UNIT, 100000)
-    for index, frame in tqdm(df.groupby('date')):
-        days_count = frame.index[0]
-        frame.set_index('ticker', inplace=True)
-        for ticker, info in portfolio.holding():
-            if frame.loc[ticker, 'low'] <= info['cut_loss']:
-                portfolio.sell(ticker, Reason.CL, index, info['cut_loss'], days_count)
-            elif frame.loc[ticker, 'sell_signal'] == 1:
-                portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'close'], days_count)
-        frame = frame.loc[
-                    (frame['buy_signal'].values != 0) & (~frame.index.isin(portfolio.list()))].sort_values(
-            'buy_signal', ascending=False)[:portfolio.free()]
-        allocation = portfolio.allocation()
-        for item in frame.index.to_list():
-            portfolio.buy(item, index, frame.loc[item, 'close'], allocation, days_count)
+   indicator = Indicator()
 
-    performance = Performance(portfolio)
-    performance.objective_function()
-    performance.performance_metric()
+   # Option 1: Specifying indicators
+   indicator.sma()
+   indicator.ema()
+   indicator.pivot()
+
+   # Option 2: Select all indicators
+   indicator.all()
+
+Universe Usage:
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.data import Universe
+
+   universe = Universe(selection=UniverseSelection.STOCKS, api_key='your api key',
+                        indicator=indicator)
+
+   # Converting to DataFrame
+   df = universe.df
+
+Performance Usage:
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.performance import Performance
+
+   performance = Performance(portfolio)
+
+   # Don't want to show graph?
+   performance = Performance(portfolio, show=False)
+
+   performance.objective_function()
+
+   performance.performance_metric()
+
+Common Usage:
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.performance import Performance
+   from optimus.backtesting.portfolio import Portfolio
+   from optimus.backtesting.selection import PositionSizing, Reason
+   from optimus.backtesting.data import Universe, UniverseSelection
+   from optimus.backtesting.indicator import Indicator
+   from tqdm import tqdm
+   import numpy as np
+
+   # Initializing indicators
+   indicator = Indicator()
+   indicator.all()
+   indicator.macd([[10, 20, 7]])
+
+   # Initializing universe
+   universe = Universe(selection=UniverseSelection.STOCKS, api_key='your api key', indicator=indicator)
+   df = universe.df
+
+   # Entry and exit signal
+   df['sell_signal'] = np.where(df['MACDdiff_10_20_7'] < 0, 1, 0)
+   df['buy_signal'] = np.where(
+       (df['close'] >= 0.2) & (df['volume'] >= 100000) & (df['MACDdiff_10_20_7'] >= 0) & (df['MACD_10_20_7'] >= 0) & (
+               df['MACDsign_10_20_7'] >= 0) & (df['sell_signal'] == 0), df['momentum'].values, 0)
+   df['buy_signal'] = df['buy_signal'].fillna(0)
+
+   # Initializing portfolio
+   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, 100000)
+   for index, frame in tqdm(df.groupby('date'), "Backtesting"):
+       days_count = frame.index[0]
+       frame.set_index('ticker', inplace=True)
+       for ticker, info in portfolio.holding():
+           if frame.loc[ticker, 'low'] <= info['cut_loss']:
+               portfolio.sell(ticker, Reason.CL, index, info['cut_loss'], days_count)
+           elif frame.loc[ticker, 'sell_signal'] == 1:
+               portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'close'], days_count)
+       frame = frame.loc[
+                   (frame['buy_signal'].values != 0) & (~frame.index.isin(portfolio.list()))].sort_values(
+           'buy_signal', ascending=False)[:portfolio.free()]
+       allocation = portfolio.allocation()
+       for item in frame.index.to_list():
+           portfolio.buy(item, index, frame.loc[item, 'close'], allocation, days_count)
+
+   # Measuring performance
+   performance = Performance(portfolio)
+   performance.objective_function()
+   performance.performance_metric()
 
 .. toctree::
    :maxdepth: 10

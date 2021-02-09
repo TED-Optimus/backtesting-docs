@@ -179,33 +179,28 @@
 <span id="optimus-backtesting-data-module"></span><h2>optimus.backtesting.data module<a class="headerlink" href="#module-optimus.backtesting.data" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="optimus.backtesting.data.Universe">
-<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.data.</code><code class="sig-name descname">Universe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection">optimus.backtesting.selection.UniverseSelection</a></span></em>, <em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">includes</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span><a class="reference internal" href="#optimus.backtesting.selection.Indicators" title="optimus.backtesting.selection.Indicators">optimus.backtesting.selection.Indicators</a><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">full</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">auto_run</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.data.</code><code class="sig-name descname">Universe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection">optimus.backtesting.selection.UniverseSelection</a></span></em>, <em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">indicator</span><span class="p">:</span> <span class="n">optimus.backtesting.indicator.Indicator</span></em>, <em class="sig-param"><span class="n">auto_run</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">optimus.backtesting.api_key.ApiKey</span></code></p>
 <p><strong>Generate an Universe for backtesting</strong></p>
-<p>Usage:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">UniverseSelection</span><span class="o">.</span><span class="n">STOCKS</span><span class="p">,</span>
-            <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;your api key here!&#39;</span><span class="p">,</span>
-            <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="n">Indicators</span><span class="o">.</span><span class="n">SMA</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MACD</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MOMENTUM</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_df</span><span class="p">())</span> <span class="c1"># output to dataframe</span>
-</pre></div>
-</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selection</strong> (<a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection"><em>UniverseSelection</em></a>) – Stocks, Warrants, or Indices</p></li>
+<li><p><strong>api_key</strong> (<em>str</em>) – API Key</p></li>
+<li><p><strong>indicator</strong> (<em>Indicator</em>) – Indicator</p></li>
+<li><p><strong>auto_run</strong> (<em>bool</em>) – Computation, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
-<dt id="optimus.backtesting.data.Universe.check_for_update">
-<code class="sig-name descname">check_for_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe.check_for_update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Match data with server and sync if necessary</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="optimus.backtesting.data.Universe.sync_with_server">
-<code class="sig-name descname">sync_with_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe.sync_with_server" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update local data if out of sync</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="optimus.backtesting.data.Universe.to_df">
-<code class="sig-name descname">to_df</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#optimus.backtesting.data.Universe.to_df" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert Universe to a DataFrame</p>
+<dt id="optimus.backtesting.data.Universe.df">
+<em class="property">property </em><code class="sig-name descname">df</code><a class="headerlink" href="#optimus.backtesting.data.Universe.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate into DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -215,8 +210,9 @@
 <span id="optimus-backtesting-performance-module"></span><h2>optimus.backtesting.performance module<a class="headerlink" href="#module-optimus.backtesting.performance" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="optimus.backtesting.performance.Performance">
-<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.performance.</code><code class="sig-name descname">Performance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">portfolio</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span><a class="reference internal" href="#optimus.backtesting.portfolio.Portfolio" title="optimus.backtesting.portfolio.Portfolio">optimus.backtesting.portfolio.Portfolio</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.performance.</code><code class="sig-name descname">Performance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">portfolio</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.portfolio.Portfolio" title="optimus.backtesting.portfolio.Portfolio">optimus.backtesting.portfolio.Portfolio</a></span></em>, <em class="sig-param"><span class="n">show</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Waiting for TJ</p>
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.objective_function">
 <code class="sig-name descname">objective_function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.objective_function" title="Permalink to this definition">¶</a></dt>
@@ -273,6 +269,28 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.capital">
+<em class="property">property </em><code class="sig-name descname">capital</code><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.capital" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current capital</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer/ Float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.cut_loss">
+<em class="property">property </em><code class="sig-name descname">cut_loss</code><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.cut_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cut loss percentage set by user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.portfolio.Portfolio.free">
 <code class="sig-name descname">free</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.free" title="Permalink to this definition">¶</a></dt>
 <dd><p>Slots available in portfolio.</p>
@@ -290,6 +308,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of portfolio holdings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.initial_capital">
+<em class="property">property </em><code class="sig-name descname">initial_capital</code><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial capital set by user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -322,12 +351,29 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size of the portfolio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Integer</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="py function">
-<dt id="optimus.backtesting.portfolio.transaction">
-<code class="sig-prename descclassname">optimus.backtesting.portfolio.</code><code class="sig-name descname">transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticker</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">action</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.Action" title="optimus.backtesting.selection.Action">optimus.backtesting.selection.Action</a></span></em>, <em class="sig-param"><span class="n">reason</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.Reason" title="optimus.backtesting.selection.Reason">optimus.backtesting.selection.Reason</a></span></em>, <em class="sig-param"><span class="n">open_date</span></em>, <em class="sig-param"><span class="n">lot</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">open_price</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">cl_price</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">close_price</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">close_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">days</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.transaction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.transactions">
+<em class="property">property </em><code class="sig-name descname">transactions</code><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transactions list generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="module-optimus.backtesting.selection">
@@ -345,63 +391,6 @@
 <dl class="py attribute">
 <dt id="optimus.backtesting.selection.Action.SELL">
 <code class="sig-name descname">SELL</code><em class="property"> = 2</em><a class="headerlink" href="#optimus.backtesting.selection.Action.SELL" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="optimus.backtesting.selection.Indicators">
-<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.selection.</code><code class="sig-name descname">Indicators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.selection.Indicators" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.BB">
-<code class="sig-name descname">BB</code><em class="property"> = 4</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.BB" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.EMA">
-<code class="sig-name descname">EMA</code><em class="property"> = 3</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.EMA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.KELTNER">
-<code class="sig-name descname">KELTNER</code><em class="property"> = 10</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.KELTNER" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.MACD">
-<code class="sig-name descname">MACD</code><em class="property"> = 6</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.MACD" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.MOMENTUM">
-<code class="sig-name descname">MOMENTUM</code><em class="property"> = 8</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.MOMENTUM" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.PIVOT">
-<code class="sig-name descname">PIVOT</code><em class="property"> = 7</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.PIVOT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.RSI">
-<code class="sig-name descname">RSI</code><em class="property"> = 9</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.RSI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.SMA">
-<code class="sig-name descname">SMA</code><em class="property"> = 2</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.SMA" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.STOCHASTIC">
-<code class="sig-name descname">STOCHASTIC</code><em class="property"> = 5</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.STOCHASTIC" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="optimus.backtesting.selection.Indicators.VOLUME_MA">
-<code class="sig-name descname">VOLUME_MA</code><em class="property"> = 1</em><a class="headerlink" href="#optimus.backtesting.selection.Indicators.VOLUME_MA" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

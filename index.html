@@ -155,7 +155,69 @@
             
   <div class="section" id="welcome-to-ted-optimus-backtesting-s-documentation">
 <h1>Welcome to TED Optimus - backtesting’s documentation!<a class="headerlink" href="#welcome-to-ted-optimus-backtesting-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Usage:</p>
+<p>Indicator Usage:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.indicator</span> <span class="kn">import</span> <span class="n">Indicator</span>
+
+<span class="n">indicator</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">()</span>
+
+<span class="c1"># Option 1: Specifying indicators</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">sma</span><span class="p">()</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">ema</span><span class="p">()</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">pivot</span><span class="p">()</span>
+
+<span class="c1"># Option 2: Select all indicators</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Universe Usage:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.data</span> <span class="kn">import</span> <span class="n">Universe</span>
+
+<span class="n">universe</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">UniverseSelection</span><span class="o">.</span><span class="n">STOCKS</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;your api key&#39;</span><span class="p">,</span>
+                     <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">)</span>
+
+<span class="c1"># Converting to DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</td></tr></table></div>
+<p>Performance Usage:</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.performance</span> <span class="kn">import</span> <span class="n">Performance</span>
+
+<span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">)</span>
+
+<span class="c1"># Don&#39;t want to show graph?</span>
+<span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">()</span>
+
+<span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p>Common Usage:</p>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -184,35 +246,67 @@
 26
 27
 28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">df</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">UniverseSelection</span><span class="o">.</span><span class="n">STOCKS</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;your api key here&#39;</span><span class="p">,</span>
-               <span class="n">includes</span><span class="o">=</span><span class="p">[</span><span class="n">Indicators</span><span class="o">.</span><span class="n">SMA</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MACD</span><span class="p">,</span> <span class="n">Indicators</span><span class="o">.</span><span class="n">MOMENTUM</span><span class="p">])</span>
- <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
- <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDdiff_10_20_7&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># exit signal</span>
- <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
-     <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDdiff_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACD_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
-             <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDsign_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;momentum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
- <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.performance</span> <span class="kn">import</span> <span class="n">Performance</span>
+<span class="kn">from</span> <span class="nn">optimus.backtesting.portfolio</span> <span class="kn">import</span> <span class="n">Portfolio</span>
+<span class="kn">from</span> <span class="nn">optimus.backtesting.selection</span> <span class="kn">import</span> <span class="n">PositionSizing</span><span class="p">,</span> <span class="n">Reason</span>
+<span class="kn">from</span> <span class="nn">optimus.backtesting.data</span> <span class="kn">import</span> <span class="n">Universe</span><span class="p">,</span> <span class="n">UniverseSelection</span>
+<span class="kn">from</span> <span class="nn">optimus.backtesting.indicator</span> <span class="kn">import</span> <span class="n">Indicator</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
- <span class="c1"># Init portfolio here</span>
- <span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
- <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)):</span>
-     <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-     <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-     <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-         <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-             <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-         <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-             <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-     <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-                 <span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-         <span class="s1">&#39;buy_signal&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
-     <span class="n">allocation</span> <span class="o">=</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">allocation</span><span class="p">()</span>
-     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
-         <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">allocation</span><span class="p">,</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="c1"># Initializing indicators</span>
+<span class="n">indicator</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">()</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="n">indicator</span><span class="o">.</span><span class="n">macd</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
 
- <span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">)</span>
- <span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">()</span>
- <span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
+<span class="c1"># Initializing universe</span>
+<span class="n">universe</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="n">UniverseSelection</span><span class="o">.</span><span class="n">STOCKS</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;your api key&#39;</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">df</span>
+
+<span class="c1"># Entry and exit signal</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDdiff_10_20_7&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDdiff_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACD_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MACDsign_10_20_7&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;momentum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Initializing portfolio</span>
+<span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
+    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                <span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+        <span class="s1">&#39;buy_signal&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
+    <span class="n">allocation</span> <span class="o">=</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">allocation</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+        <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">allocation</span><span class="p">,</span> <span class="n">days_count</span><span class="p">)</span>
+
+<span class="c1"># Measuring performance</span>
+<span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">)</span>
+<span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">()</span>
+<span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 <div class="toctree-wrapper compound">
