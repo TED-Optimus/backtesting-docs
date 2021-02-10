@@ -28,6 +28,14 @@ optimus.backtesting.portfolio module
    :undoc-members:
    :show-inheritance:
 
+optimus.backtesting.indicator module
+------------------------------------
+
+.. automodule:: optimus.backtesting.indicator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 optimus.backtesting.selection module
 ------------------------------------
 

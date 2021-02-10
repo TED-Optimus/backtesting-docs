@@ -32,6 +32,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -92,6 +93,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.data">optimus.backtesting.data module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.performance">optimus.backtesting.performance module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.portfolio">optimus.backtesting.portfolio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.indicator">optimus.backtesting.indicator module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.selection">optimus.backtesting.selection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting">Module contents</a></li>
 </ul>
@@ -179,7 +181,7 @@
 <span id="optimus-backtesting-data-module"></span><h2>optimus.backtesting.data module<a class="headerlink" href="#module-optimus.backtesting.data" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="optimus.backtesting.data.Universe">
-<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.data.</code><code class="sig-name descname">Universe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection">optimus.backtesting.selection.UniverseSelection</a></span></em>, <em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">indicator</span><span class="p">:</span> <span class="n">optimus.backtesting.indicator.Indicator</span></em>, <em class="sig-param"><span class="n">auto_run</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.data.</code><code class="sig-name descname">Universe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">selection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection">optimus.backtesting.selection.UniverseSelection</a></span></em>, <em class="sig-param"><span class="n">api_key</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">indicator</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator">optimus.backtesting.indicator.Indicator</a></span></em>, <em class="sig-param"><span class="n">auto_run</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">optimus.backtesting.api_key.ApiKey</span></code></p>
 <p><strong>Generate an Universe for backtesting</strong></p>
 <dl class="field-list simple">
@@ -187,7 +189,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>selection</strong> (<a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection"><em>UniverseSelection</em></a>) – Stocks, Warrants, or Indices</p></li>
 <li><p><strong>api_key</strong> (<em>str</em>) – API Key</p></li>
-<li><p><strong>indicator</strong> (<em>Indicator</em>) – Indicator</p></li>
+<li><p><strong>indicator</strong> (<a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><em>Indicator</em></a>) – Indicator</p></li>
 <li><p><strong>auto_run</strong> (<em>bool</em>) – Computation, defaults to True</p></li>
 </ul>
 </dd>
@@ -224,77 +226,98 @@
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.average_losing_trade">
 <em class="property">property </em><code class="sig-name descname">average_losing_trade</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_losing_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average loss of all losing trades. Losing trades is defined as &lt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.average_number_of_bars_in_losers">
 <em class="property">property </em><code class="sig-name descname">average_number_of_bars_in_losers</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_number_of_bars_in_losers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average number of days for all round losing trades. Losing trades is defined as &lt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.average_number_of_bars_in_winners">
 <em class="property">property </em><code class="sig-name descname">average_number_of_bars_in_winners</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_number_of_bars_in_winners" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average number of days for all round winning trades. Winning trades is defined as &gt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.average_trade">
 <em class="property">property </em><code class="sig-name descname">average_trade</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average profit of all trades</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.average_winning_trade">
 <em class="property">property </em><code class="sig-name descname">average_winning_trade</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_winning_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average profit of all winning trades. Winning trades is defined as &gt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.gross_loss">
 <em class="property">property </em><code class="sig-name descname">gross_loss</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.gross_loss" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sum of all loss. Loss is defined as value &lt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.gross_profit">
 <em class="property">property </em><code class="sig-name descname">gross_profit</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.gross_profit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sum of all profit. Profit is defined as value &gt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.largest_losing_trade">
 <em class="property">property </em><code class="sig-name descname">largest_losing_trade</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.largest_losing_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Largest loss among all losing trades. Losing trades is defined as &lt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.largest_winning_trade">
 <em class="property">property </em><code class="sig-name descname">largest_winning_trade</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.largest_winning_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Largest profit among all winning trades. Winning trades is defined as &gt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.max_daily_drawdown">
 <em class="property">property </em><code class="sig-name descname">max_daily_drawdown</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.max_daily_drawdown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Daily drawdown means difference between Cumulative net profit and Maximum Cumulative net profit</p>
+<p>Maximum daily drawdown means Largest drawdown or decline in the equity curve of a trading strategy from an equity peak</p>
+<p>Measures the downside of the system but ignores the upside potential</p>
+<p>Maximum daily drawdown is in % to cater for the size of portfolio throughout time</p>
+<p>Look for smaller maximum daily drawdown</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.maximum_intraday_drawdown">
 <em class="property">property </em><code class="sig-name descname">maximum_intraday_drawdown</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.maximum_intraday_drawdown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Largest possible net loss in the system throughout the trading period.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.maximum_intraday_profit">
 <em class="property">property </em><code class="sig-name descname">maximum_intraday_profit</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.maximum_intraday_profit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Largest possible net profit in the system throughout the trading period.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.net_profit">
 <em class="property">property </em><code class="sig-name descname">net_profit</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.net_profit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sum of all profit and loss at the end date</p>
+<p>Measures the upside of the system but ignores the distribution of trades and downside risk</p>
+<p>Look for larger net profit</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.number_losing_trades">
 <em class="property">property </em><code class="sig-name descname">number_losing_trades</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.number_losing_trades" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Number of complete round losing trades. Losing trades is defined as &lt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.number_winning_trades">
 <em class="property">property </em><code class="sig-name descname">number_winning_trades</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.number_winning_trades" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Number of complete round winning trades. Winning trades is defined as &gt; 0</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.objective_function">
@@ -304,7 +327,10 @@
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.percent_profitable">
 <em class="property">property </em><code class="sig-name descname">percent_profitable</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.percent_profitable" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="math notranslate nohighlight">
+\[\dfrac{Number\ winning\ trades}{Total\ number\ of\ trades}\]</div>
+<p>Look for percent profitable above 50%, especially in mean reversion strategy</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.performance_metric">
@@ -314,27 +340,67 @@
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.profit_factor">
 <em class="property">property </em><code class="sig-name descname">profit_factor</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.profit_factor" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="math notranslate nohighlight">
+\[\dfrac{Gross\ profit}{Gross\ loss}\]</div>
+<p>Look for factor &gt; 1, for all type of system</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.prom">
 <em class="property">property </em><code class="sig-name descname">prom</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.prom" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>PROM assumes trading strategy will win less and lose more in real-time trading.</p>
+<div class="math notranslate nohighlight">
+\[PROM = \dfrac{(AW×(WT-\sqrt{WT}))-(AL×(LT-\sqrt{LT}))}{Initial\ Capital}\]</div>
+<p>WT = Number of Wins</p>
+<p>AW = Average Wins</p>
+<p>LT = Number of Losses</p>
+<p>AL = Average Loss</p>
+<p>Look for higher PROM.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.performance.Performance.prom_less">
+<em class="property">property </em><code class="sig-name descname">prom_less</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.prom_less" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROM minus biggest win removes the largest single profitable trade from the gross profit.</p>
+<p>Look for higher PROM minus biggest win</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.ratio_average_win_over_average_loss">
 <em class="property">property </em><code class="sig-name descname">ratio_average_win_over_average_loss</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.ratio_average_win_over_average_loss" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Average winning trade / average losing trade in absolute term</p>
+<p>Look for ratio above 1, especially in momentum trend following system</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.performance.Performance.sharpe_ratio">
+<em class="property">property </em><code class="sig-name descname">sharpe_ratio</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formula:</p>
+<div class="math notranslate nohighlight">
+\[\dfrac{Mean[Asset\ return - Risk\ free\ return]}{Standard\ deviation\ of\ asset\ excess\ return}\]</div>
+<p>We take 2.8% for Risk free return, 10Y MGS rate.</p>
+<p>Look for Sharpe ratio above 1</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.sqn">
 <em class="property">property </em><code class="sig-name descname">sqn</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.sqn" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>SQN is trademark of Van Tharp, based on R-multiples.</p>
+<div class="math notranslate nohighlight">
+\[R-multiples = \dfrac{Exit\ price - Entry\ price}{Entry\ price - Cut\ loss\ price}\]</div>
+<div class="math notranslate nohighlight">
+\[SQN = \dfrac{Mean\ of\ R-multiples}{Standard\ Deviation\ of\ R-multiples}×{square\ root\ of\ Number\ of\ Trades}\]</div>
+<ul class="simple">
+<li><p>Number of Trades we take min (number of trades, 100 ) because too many trades will overestimate the quality of the system</p></li>
+</ul>
+<p>Look for sqn above 2. Above 7 is considered holy grail.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.total_number_of_trades">
 <em class="property">property </em><code class="sig-name descname">total_number_of_trades</code><a class="headerlink" href="#optimus.backtesting.performance.Performance.total_number_of_trades" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Number of complete round trades. Round trades defined as opening position with a Buy and closing postion with a Sell</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -346,13 +412,16 @@
 <em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.portfolio.</code><code class="sig-name descname">Portfolio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position_sizing</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.PositionSizing" title="optimus.backtesting.selection.PositionSizing">optimus.backtesting.selection.PositionSizing</a></span></em>, <em class="sig-param"><span class="n">initial_capital</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">10</span></em>, <em class="sig-param"><span class="n">cut_loss</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.08</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Constructs a Portfolio</p>
-<p>Usage:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">position_sizing</span><span class="o">=</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span>
-                        <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
-                        <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                        <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
-</pre></div>
-</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position_sizing</strong> (<a class="reference internal" href="#optimus.backtesting.selection.PositionSizing" title="optimus.backtesting.selection.PositionSizing"><em>PositionSizing</em></a>) – Must be an instance of PositionSizing</p></li>
+<li><p><strong>initial_capital</strong> (<em>int</em>) – Initial capital allocated for the portfolio</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Portfolio size</p></li>
+<li><p><strong>cut_loss</strong> (<em>float</em>) – Cut loss percentage</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="optimus.backtesting.portfolio.Portfolio.allocation">
 <code class="sig-name descname">allocation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.allocation" title="Permalink to this definition">¶</a></dt>
@@ -482,6 +551,142 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-optimus.backtesting.indicator">
+<span id="optimus-backtesting-indicator-module"></span><h2>optimus.backtesting.indicator module<a class="headerlink" href="#module-optimus.backtesting.indicator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="optimus.backtesting.indicator.Indicator">
+<em class="property">class </em><code class="sig-prename descclassname">optimus.backtesting.indicator.</code><code class="sig-name descname">Indicator</code><a class="headerlink" href="#optimus.backtesting.indicator.Indicator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Indicator class.</p>
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.all">
+<code class="sig-name descname">all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Includes all indicators</p>
+<p>SMA, EMA, VMA, Bollinger Band, Stochastic Oscillator, MACD, Pivot, Momentum, RSI, Keltner Channel</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.bollinger_band">
+<code class="sig-name descname">bollinger_band</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.bollinger_band" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bollinger Band</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>STD</em><em>]</em><em>]</em>) – Nested arrays of bollinger bands params, defaults to [[20, 2], [20, 3]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.ema">
+<code class="sig-name descname">ema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.ema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponential Moving Average</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of EMA period, defaults to [4, 5, 10, 13, 20, 26, 50, 150]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.keltner">
+<code class="sig-name descname">keltner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>List<span class="p">[</span>Union<span class="p">[</span>int<span class="p">, </span>float<span class="p">]</span><span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.keltner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keltner Channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>ATR</em><em>, </em><em>Multiplier</em><em>]</em><em>]</em>) – Nested arrays of keltner channel, defaults to [[20, 20, 1.5]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.length">
+<code class="sig-name descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicators size</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.macd">
+<code class="sig-name descname">macd</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.macd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moving Average Convergence Divergence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>SMA Fast</em><em>, </em><em>SMA Slow</em><em>, </em><em>EMA</em><em>]</em><em>]</em>) – Nested arrays of MACD params, defaults to [[12, 26, 9]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.momentum">
+<code class="sig-name descname">momentum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">weightage</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>float<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.momentum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proprietary momentum indicator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – 4 windows, defaults to [63, 126, 189, 252]</p></li>
+<li><p><strong>weightage</strong> – Weightage of each window, summation of it must be equals to 1, defaults to [0.4, 0.2, 0.2, 0.2]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.pivot">
+<code class="sig-name descname">pivot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">enabled</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.pivot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proprietary pivot indicator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – defaults to True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.rsi">
+<code class="sig-name descname">rsi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.rsi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relative Strength Index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of RSI period, defaults to [14]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.sma">
+<code class="sig-name descname">sma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.sma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple Moving Average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of SMA period, defaults to [5, 10, 13, 20, 26, 50, 150, 200]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.stochastic">
+<code class="sig-name descname">stochastic</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.stochastic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stochastic Oscillator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Period</em><em>, </em><em>MA</em><em>]</em><em>]</em>) – Nested arrays of stochastic params, defaults to [[14, 3]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.vma">
+<code class="sig-name descname">vma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.vma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume Moving Average</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of VMA period, defaults to [5, 10, 20]</p>
 </dd>
 </dl>
 </dd></dl>
