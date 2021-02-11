@@ -7,6 +7,7 @@ Welcome to TED Optimus - backtesting's documentation!
 =====================================================
 
 Indicator Usage:
+""""""""""""""""
 
 .. code-block:: python
    :linenos:
@@ -24,6 +25,7 @@ Indicator Usage:
    indicator.all()
 
 Universe Usage:
+"""""""""""""""
 
 .. code-block:: python
    :linenos:
@@ -37,6 +39,7 @@ Universe Usage:
    df = universe.df
 
 Performance Usage:
+""""""""""""""""""
 
 .. code-block:: python
    :linenos:
@@ -53,6 +56,7 @@ Performance Usage:
    performance.performance_metric()
 
 Common Usage:
+"""""""""""""
 
 .. code-block:: python
    :linenos:
@@ -102,6 +106,26 @@ Common Usage:
    performance = Performance(portfolio)
    performance.objective_function()
    performance.performance_metric()
+
+################
+CHANGELOG v3.0.0
+################
+
+- Added multi period support
+- Added multi period shifting support
+- Added transactions list to CSV
+- Added objective function to CSV
+- Added performance metrics to CSV
+- Bug Fixes
+
+################
+CHANGELOG v2.0.0
+################
+
+- Huge performance increase
+- Added custom indicators support
+- Added SQN and Sharpe
+- Bug Fixes
 
 .. toctree::
    :maxdepth: 10
