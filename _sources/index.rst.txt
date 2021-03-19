@@ -108,6 +108,14 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v3.1.0
+################
+
+- Fixed RSI indicator
+- Refactor .values to .to_numpy()
+- Performance remains unchanged
+
+################
 CHANGELOG v3.0.0
 ################
 

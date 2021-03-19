@@ -1,7 +1,0 @@
-backtesting
-===========
-
-.. toctree::
-   :maxdepth: 5
-
-   optimus
