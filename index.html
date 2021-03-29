@@ -269,7 +269,17 @@
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.performance</span> <span class="kn">import</span> <span class="n">Performance</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.performance</span> <span class="kn">import</span> <span class="n">Performance</span>
 <span class="kn">from</span> <span class="nn">optimus.backtesting.portfolio</span> <span class="kn">import</span> <span class="n">Portfolio</span>
 <span class="kn">from</span> <span class="nn">optimus.backtesting.selection</span> <span class="kn">import</span> <span class="n">PositionSizing</span><span class="p">,</span> <span class="n">Reason</span>
 <span class="kn">from</span> <span class="nn">optimus.backtesting.data</span> <span class="kn">import</span> <span class="n">Universe</span><span class="p">,</span> <span class="n">UniverseSelection</span>
@@ -294,21 +304,31 @@
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Initializing portfolio</span>
-<span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
-    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-                <span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-        <span class="s1">&#39;buy_signal&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
-    <span class="n">allocation</span> <span class="o">=</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">allocation</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
-        <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">allocation</span><span class="p">,</span> <span class="n">days_count</span><span class="p">)</span>
+ <span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+
+ <span class="c1"># Backtesting starts here!</span>
+ <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
+     <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+     <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+     <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+         <span class="c1"># Check for cut loss first</span>
+         <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+             <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+         <span class="c1"># Check for exit signal</span>
+         <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+             <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+
+     <span class="c1"># Sort remaining stocks that have buy signals by momentum (High to low)</span>
+     <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                 <span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+         <span class="s1">&#39;buy_signal&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
+
+     <span class="c1"># Retrieve portfolio allocation</span>
+     <span class="n">allocation</span> <span class="o">=</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">allocation</span><span class="p">()</span>
+
+     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+         <span class="c1"># Buy it!</span>
+         <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">allocation</span><span class="p">,</span> <span class="n">days_count</span><span class="p">)</span>
 
 <span class="c1"># Measuring performance</span>
 <span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">)</span>
@@ -316,6 +336,19 @@
 <span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
+<div class="section" id="changelog-v3-1-2">
+<h3>CHANGELOG v3.1.2<a class="headerlink" href="#changelog-v3-1-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed several EMA calculation issue</p></li>
+<li><p>Added ATR</p></li>
+</ul>
+</div>
+<div class="section" id="changelog-v3-1-1">
+<h3>CHANGELOG v3.1.1<a class="headerlink" href="#changelog-v3-1-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed matplotlib memory leakage issue</p></li>
+</ul>
+</div>
 <div class="section" id="changelog-v3-1-0">
 <h3>CHANGELOG v3.1.0<a class="headerlink" href="#changelog-v3-1-0" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">

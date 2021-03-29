@@ -86,26 +86,49 @@ Common Usage:
    df['buy_signal'] = df['buy_signal'].fillna(0)
 
    # Initializing portfolio
-   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, 100000)
-   for index, frame in tqdm(df.groupby('date'), "Backtesting"):
-       days_count = frame.index[0]
-       frame.set_index('ticker', inplace=True)
-       for ticker, info in portfolio.holding():
-           if frame.loc[ticker, 'low'] <= info['cut_loss']:
-               portfolio.sell(ticker, Reason.CL, index, info['cut_loss'], days_count)
-           elif frame.loc[ticker, 'sell_signal'] == 1:
-               portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'close'], days_count)
-       frame = frame.loc[
-                   (frame['buy_signal'].values != 0) & (~frame.index.isin(portfolio.list()))].sort_values(
-           'buy_signal', ascending=False)[:portfolio.free()]
-       allocation = portfolio.allocation()
-       for item in frame.index.to_list():
-           portfolio.buy(item, index, frame.loc[item, 'close'], allocation, days_count)
+    portfolio = Portfolio(PositionSizing.EQUAL_UNIT, 100000)
+
+    # Backtesting starts here!
+    for index, frame in tqdm(df.groupby('date'), "Backtesting"):
+        days_count = frame.index[0]
+        frame.set_index('ticker', inplace=True)
+        for ticker, info in portfolio.holding():
+            # Check for cut loss first
+            if frame.loc[ticker, 'low'] <= info['cut_loss']:
+                portfolio.sell(ticker, Reason.CL, index, info['cut_loss'], days_count)
+            # Check for exit signal
+            elif frame.loc[ticker, 'sell_signal'] == 1:
+                portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'close'], days_count)
+
+        # Sort remaining stocks that have buy signals by momentum (High to low)
+        frame = frame.loc[
+                    (frame['buy_signal'].values != 0) & (~frame.index.isin(portfolio.list()))].sort_values(
+            'buy_signal', ascending=False)[:portfolio.free()]
+
+        # Retrieve portfolio allocation
+        allocation = portfolio.allocation()
+
+        for item in frame.index.to_list():
+            # Buy it!
+            portfolio.buy(item, index, frame.loc[item, 'close'], allocation, days_count)
 
    # Measuring performance
    performance = Performance(portfolio)
    performance.objective_function()
    performance.performance_metric()
+
+################
+CHANGELOG v3.1.2
+################
+
+- Fixed several EMA calculation issue
+- Added ATR
+
+################
+CHANGELOG v3.1.1
+################
+
+- Fixed matplotlib memory leakage issue
 
 ################
 CHANGELOG v3.1.0
