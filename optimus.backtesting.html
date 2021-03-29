@@ -722,6 +722,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.atr">
 <code class="sig-name descname"><span class="pre">atr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.atr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average True Range</p>
+<p>Series named as ATR_[Period]. E.g. ATR_14.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of ATR period, defaults to [14]</p>
@@ -733,6 +734,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.bollinger_band">
 <code class="sig-name descname"><span class="pre">bollinger_band</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.bollinger_band" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bollinger Band</p>
+<p>Series named as LowerBand_[MA]_[STD], MiddleBand_[MA]_[STD], UpperBand_[MA]_[STD], BbWidth_[MA]_[STD]. E.g. LowerBand_20_2, MiddleBand_20_2, UpperBand_20_2, BbWidth_20_2</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>STD</em><em>]</em><em>]</em>) – Nested arrays of bollinger bands params, defaults to [[20, 2], [20, 3]]</p>
@@ -744,6 +746,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.ema">
 <code class="sig-name descname"><span class="pre">ema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.ema" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exponential Moving Average</p>
+<p>Series named as EMA_[param]. E.g. EMA_4, EMA_5.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of EMA period, defaults to [4, 5, 10, 13, 20, 26, 50, 150]</p>
@@ -755,6 +758,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.keltner">
 <code class="sig-name descname"><span class="pre">keltner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.keltner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Keltner Channel</p>
+<p>Series named as KelChU_[MA]_[ATR]_[Multiplier], KelChD_[MA]_[ATR]_[Multiplier], squeeze_[MA]_[ATR]_[Multiplier]. E.g. KelChU_[20]_[20]_[1.5], KelChD_[20]_[20]_[1.5], squeeze_[20]_[20]_[1.5]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>ATR</em><em>, </em><em>Multiplier</em><em>]</em><em>]</em>) – Nested arrays of keltner channel, defaults to [[20, 20, 1.5]]</p>
@@ -772,6 +776,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.macd">
 <code class="sig-name descname"><span class="pre">macd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.macd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Moving Average Convergence Divergence</p>
+<p>Series named as MACD_[fast]_[slow]_[ema], MACDsign_[fast]_[slow]_[ema], MACDdiff_[fast]_[slow]_[ema]. E.g. MACD_12_26_9.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>SMA Fast</em><em>, </em><em>SMA Slow</em><em>, </em><em>EMA</em><em>]</em><em>]</em>) – Nested arrays of MACD params, defaults to [[12, 26, 9]]</p>
@@ -783,6 +788,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.momentum">
 <code class="sig-name descname"><span class="pre">momentum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weightage</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.momentum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proprietary momentum indicator</p>
+<p>Series named as momentum</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -797,6 +803,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.pivot">
 <code class="sig-name descname"><span class="pre">pivot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.pivot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Proprietary pivot indicator</p>
+<p>Series named as upPivot, downPivot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – defaults to True</p>
@@ -808,6 +815,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.rsi">
 <code class="sig-name descname"><span class="pre">rsi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.rsi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Relative Strength Index</p>
+<p>Series named as RSI_[period]. E.g. RSI_14</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of RSI period, defaults to [14]</p>
@@ -819,6 +827,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.sma">
 <code class="sig-name descname"><span class="pre">sma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.sma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple Moving Average.</p>
+<p>Series named as SMA_[param]. E.g. SMA_5, SMA_10.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of SMA period, defaults to [5, 10, 13, 20, 26, 50, 150, 200]</p>
@@ -830,6 +839,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.stochastic">
 <code class="sig-name descname"><span class="pre">stochastic</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.stochastic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stochastic Oscillator</p>
+<p>Series named as SOk_[Period]_[MA], SOd_[Period]_[MA]. E.g. SOk_14_3, SOd_14_3.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Period</em><em>, </em><em>MA</em><em>]</em><em>]</em>) – Nested arrays of stochastic params, defaults to [[14, 3]]</p>
@@ -841,6 +851,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.vma">
 <code class="sig-name descname"><span class="pre">vma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.vma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Volume Moving Average</p>
+<p>Series named as VMA_[param]. E.g. VMA_5, VMA_10.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of VMA period, defaults to [5, 10, 20]</p>
