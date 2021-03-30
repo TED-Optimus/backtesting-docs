@@ -570,7 +570,7 @@
 
 <dl class="py method">
 <dt id="optimus.backtesting.portfolio.Portfolio.buy">
-<code class="sig-name descname"><span class="pre">buy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.buy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">buy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.buy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a buy transaction. If successful ticker will be added into portfolio and added into transaction list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -580,6 +580,7 @@
 <li><p><strong>price</strong> – order price</p></li>
 <li><p><strong>allocation</strong> – capital allocated for this ticker</p></li>
 <li><p><strong>index</strong> – index of open date, used to compute holding days</p></li>
+<li><p><strong>cl_price</strong> – Custom cut loss price</p></li>
 </ul>
 </dd>
 </dl>
