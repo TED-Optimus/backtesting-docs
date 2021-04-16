@@ -118,6 +118,25 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v3.2.0
+################
+
+- Indicator
+   - Average daily turnover
+   - Biggest drop
+   - Average Directional Index Rating (ADXR)
+   - William Fractal Indicator (fractal)
+   - Schaff Trend Cycle (STC)
+   - On Balance Volume (OBV)
+   - Smoothed Moving Average (SMMA)
+- Features
+   - Commissions can be enabled through Portfolio
+   - Stop loss price can be updated using portfolio.set_cut_loss_price(ticker, price)
+- Examples
+   - Trailing stop loss
+   - Take profit
+
+################
 CHANGELOG v3.1.2
 ################
 
@@ -163,3 +182,4 @@ CHANGELOG v2.0.0
    :caption: Contents:
 
    optimus
+   examples

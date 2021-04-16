@@ -1,0 +1,50 @@
+examples
+=====================================================
+
+trailing stop loss
+"""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   for index, frame in tqdm(df.groupby('date'), 'Backtesting'):
+      days_count = frame.index[0]
+        frame.set_index('ticker', inplace=True)
+
+      # Sell if stop loss is hit
+      for ticker, info in portfolio.holding():
+         if frame.loc[ticker, 'low'] <= info['cut_loss']:
+             portfolio.sell(ticker, Reason.EXIT, index, info['cut_loss'], days_count)
+
+      # Trailing stop loss
+      for ticker, info in portfolio.holding():
+         stop_percentage = 0.25
+         trailing_stop_price = frame.loc[ticker, 'high'] * (1 - stop_percentage)  # Trail stop 25% below current high
+         if trailing_stop_price > info['cut_loss']:
+             portfolio.set_cut_loss_price(ticker, trailing_stop_price)
+
+take profit
+"""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   # take profit can be set when initializing portfolio
+   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10, take_profit=0.34, cut_loss=0.1)
+
+   for index, frame in tqdm(df.groupby('date'), "Backtesting"):
+      days_count = frame.index[0]
+      frame.set_index('ticker', inplace=True)
+
+      for ticker, info in portfolio.holding():
+         if frame.loc[ticker, 'low'] <= info['cut_loss']:
+             portfolio.sell(ticker, Reason.CL, index, info['cut_loss'], days_count)
+
+         elif frame.loc[ticker, 'sell_signal'] == 1:
+             portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'open'], days_count)
+
+         elif info['take_profit'] is not None: # examples for take profit
+             if frame.loc[ticker, 'high'] >= info['take_profit']:
+                 portfolio.sell(ticker, Reason.TP, index, info['take_profit'], days_count)
+
+   # take profit can be overrode by calling portfolio.buy(..., tp_price= ?)
