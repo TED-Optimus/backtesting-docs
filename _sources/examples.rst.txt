@@ -48,3 +48,139 @@ take profit
                  portfolio.sell(ticker, Reason.TP, index, info['take_profit'], days_count)
 
    # take profit can be overrode by calling portfolio.buy(..., tp_price= ?)
+
+time stop
+""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   df['sell_signal'] = np.where((df['buy_signal'].shift(10) > 0) & (df['ticker'] == df['ticker'].shift(10)),
+                             df['date'].shift(10).dt.date, pd.to_datetime('2000-01-01'))
+
+   for index, frame in tqdm(df.groupby('date'), "Backtesting"):  # loop dataframe by date
+       days_count = frame.index[0]  # date
+       frame.set_index('ticker', inplace=True)  # set ticker as index
+
+       # Check portfolio and sell if stop loss is hit
+       for ticker, info in portfolio.holding():
+           if frame.loc[ticker, 'sell_signal'] == info['open_date']:  # 10 days sell signal
+               portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'open'], days_count)
+
+consider commissions and set brokerage fee in portfolio
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10, take_profit=None, cut_loss=0.1,
+                         commission=True, brokerage_fee=0.08)
+
+sell based on yesterday's condition
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   yesterday_frame = pd.DataFrame()
+
+   for index, frame in tqdm(df.groupby('date'), "Backtesting"):
+       days_count = frame.index[0]
+       frame.set_index('ticker', inplace=True)
+
+       for ticker, info in portfolio.holding():
+           # Sell at market open if previous bar close below SL
+           if yesterday_frame.loc[ticker, 'close'] <= info['cut_loss']:
+               portfolio.sell(ticker, Reason.EXIT, index, frame.loc[ticker, 'open'], days_count)
+
+       yesterday_frame = frame.copy()  # Update yesterday frame
+
+view all performances of strategy
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   performance = Performance(portfolio, show=True)
+   performance.objective_function()
+   performance.performance_metric()
+   performance.transactions_to_csv()
+   performance.objective_to_csv('strategy 1', 'objective_function.csv')
+   performance.performance_to_csv('performance 1', 'performance_metric.csv')
+   performance.generate_all_files(strategy_name='strategy_name', code_path='file_name.py', version='v1',
+                                  plot_image=True)
+
+dataframe list for multi period backtesting
+"""""""""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   date1 = pd.to_datetime('2019-01-01')
+   date2 = pd.to_datetime('2020-01-01')
+   date3 = pd.to_datetime('2021-01-01')
+   df_list = universe.df_multi_period(date1, date2, date3)
+
+   for df in df_list:
+   # do backtesting
+
+stocks to buy tomorrow at market open
+""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   # Init df_today
+   today = datetime.today().strftime('%Y-%m-%d')
+   today = pd.to_datetime(today)
+   mask = df.index == today
+   df_today = df[mask]
+   df_today.set_index('ticker', inplace=True)
+
+   # Stocks to buy tomorrow
+   buy = []
+   df_today['buy_signal_today'] = np.where((df_today['turnover'] >= 1000000), df['turnover'].values, 0)
+   df_today = df_today.loc[
+                  (df_today['buy_signal_today'].values != 0) & (~df_today.index.isin(portfolio.list()))].sort_values(
+       'buy_signal_today', ascending=False)[:portfolio.free()]
+   allocation = portfolio.allocation()
+   for item in df_today.index.to_list():
+       portfolio.buy(item, today, df_today.loc[item, 'close'], allocation, today)
+       buy.append(item)
+   print(f'Buy tomorrow at market open: {buy}')
+
+
+backtest on different parameters
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   def backtest(param1, param2):
+       # do backtesting
+
+       # record performance into csv
+       performance = Performance(portfolio, show=False)
+       performance.objective_function(need_print=False)
+       performance.performance_metric(need_print=False)
+       performance.objective_to_csv(f'{param1}_{param2}', 'objective_function.csv')
+       performance.performance_to_csv(f'{param1}_{param2}', 'performance_metric.csv')
+
+
+   if __name__ == '__main__':
+       # Init indicator and signal
+
+       # Backtest
+       for i in param1_list:  # row
+           for j in param2_list:  # col
+               backtest(i, j)
+
+plot heatmap for specific metric
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   universe.plot_heatmap('objective_function.csv', 'Maximum Daily Drawdown %', param_row.tolist(),
+                         param_col.tolist(), 'Param row', 'Param col', 15, 10, True,
+                         'Drawdown Heatmap.png')

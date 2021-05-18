@@ -314,6 +314,28 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="optimus.backtesting.data.Universe.plot_heatmap">
+<code class="sig-name descname"><span class="pre">plot_heatmap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'heatmap.png'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe.plot_heatmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot heatmap according to csv file from two changing parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>path</em>) – path of objective function / performance metric</p></li>
+<li><p><strong>metric</strong> (<em>string</em>) – name of metric in csv file</p></li>
+<li><p><strong>rows</strong> (<em>list</em>) – list containing values of row parameter</p></li>
+<li><p><strong>cols</strong> (<em>list</em>) – list containing values of col parameter</p></li>
+<li><p><strong>x_label</strong> (<em>string</em>) – name of x-axis label</p></li>
+<li><p><strong>y_label</strong> (<em>string</em>) – name of y-axis label</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – width of figure</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – height of figure</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em>) – save figure as png</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – name of figure</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -361,6 +383,11 @@
 <em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">average_winning_trade</span></code><a class="headerlink" href="#optimus.backtesting.performance.Performance.average_winning_trade" title="Permalink to this definition">¶</a></dt>
 <dd><p>Average profit of all winning trades. Winning trades is defined as &gt; 0</p>
 </dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.performance.Performance.generate_all_files">
+<code class="sig-name descname"><span class="pre">generate_all_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strategy_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.generate_all_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.gross_loss">
@@ -430,7 +457,7 @@
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.objective_function">
-<code class="sig-name descname"><span class="pre">objective_function</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.objective_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">objective_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">need_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.objective_function" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -457,7 +484,7 @@
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.performance_metric">
-<code class="sig-name descname"><span class="pre">performance_metric</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.performance_metric" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">performance_metric</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">need_print</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.performance_metric" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -473,6 +500,16 @@
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.performance.Performance.plot_objective_function">
+<code class="sig-name descname"><span class="pre">plot_objective_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.plot_objective_function" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.performance.Performance.plot_performance_metric">
+<code class="sig-name descname"><span class="pre">plot_performance_metric</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.plot_performance_metric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.profit_factor">
@@ -781,7 +818,7 @@
 <dt id="optimus.backtesting.indicator.Indicator.all">
 <code class="sig-name descname"><span class="pre">all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Includes all indicators</p>
-<p>SMA, EMA, VMA, On Balance Volume, Bollinger Band, Stochastic Oscillator, MACD, Pivot, Momentum,
+<p>SMA, EMA, VMA, WMA, HMA, On Balance Volume, Bollinger Band, Stochastic Oscillator, MACD, Pivot, Momentum,
 RSI, Keltner Channel, Biggest Drop</p>
 </dd></dl>
 
@@ -834,6 +871,126 @@ RSI, Keltner Channel, Biggest Drop</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bearish_abandoned_baby">
+<code class="sig-name descname"><span class="pre">candle_bearish_abandoned_baby</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bearish_abandoned_baby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bearish abandoned baby</p>
+<p>Series named as candle_bearish_abandoned_baby_[Period]. E.g. candle_bearish_abandoned_baby_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bearish_abandoned_baby period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bearish_engulfing">
+<code class="sig-name descname"><span class="pre">candle_bearish_engulfing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bearish_engulfing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bearish engulfing</p>
+<p>Series named as candle_bearish_engulfing_[Period]. E.g. candle_bearish_engulfing_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bearish_engulfing period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bearish_harami">
+<code class="sig-name descname"><span class="pre">candle_bearish_harami</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bearish_harami" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bearish harami</p>
+<p>Series named as candle_bearish_harami_[Period]. E.g. candle_bearish_harami_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bearish_harami period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bullish_abandoned_baby">
+<code class="sig-name descname"><span class="pre">candle_bullish_abandoned_baby</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bullish_abandoned_baby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bullish abandoned baby</p>
+<p>Series named as candle_bullish_abandoned_baby_[Period]. E.g. candle_bullish_abandoned_baby_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bullish_abandoned_baby period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bullish_engulfing">
+<code class="sig-name descname"><span class="pre">candle_bullish_engulfing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bullish_engulfing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bullish engulfing</p>
+<p>Series named as candle_bullish_engulfing_[Period]. E.g. candle_bullish_engulfing_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bullish_engulfing period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_bullish_harami">
+<code class="sig-name descname"><span class="pre">candle_bullish_harami</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_bullish_harami" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - bullish harami</p>
+<p>Series named as candle_bullish_harami_[Period]. E.g. candle_bullish_harami_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_bullish_harami period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_evening_star">
+<code class="sig-name descname"><span class="pre">candle_evening_star</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_evening_star" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - evening star</p>
+<p>Series named as candle_evening_star_[Period]. E.g. candle_evening_star_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_evening_star period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_hammer">
+<code class="sig-name descname"><span class="pre">candle_hammer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_hammer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - hammer</p>
+<p>Series named as candle_hammer_[Period]. E.g. candle_hammer_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_hammer period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_hanging_man">
+<code class="sig-name descname"><span class="pre">candle_hanging_man</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_hanging_man" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - hanging man</p>
+<p>Series named as candle_hanging_man_[Period]. E.g. candle_hanging_man_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_hanging_man period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.candle_morning_star">
+<code class="sig-name descname"><span class="pre">candle_morning_star</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.candle_morning_star" title="Permalink to this definition">¶</a></dt>
+<dd><p>Candlestick pattern - morning star</p>
+<p>Series named as candle_morning_star_[Period]. E.g. candle_morning_star_3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of candle_morning_star period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.ema">
 <code class="sig-name descname"><span class="pre">ema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.ema" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exponential Moving Average</p>
@@ -853,6 +1010,18 @@ RSI, Keltner Channel, Biggest Drop</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of fractal period, defaults to [2,4]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.hma">
+<code class="sig-name descname"><span class="pre">hma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.hma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hull Moving Average</p>
+<p>Series named as HMA_[param]. E.g. HMA_5, HMA_10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of HMA period, defaults to [5, 10]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -999,6 +1168,18 @@ RSI, Keltner Channel, Biggest Drop</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.trend">
+<code class="sig-name descname"><span class="pre">trend</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.trend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trend</p>
+<p>Series named as Trend_[MA length]_[Stdev multiple]_[Strong Stdev multiple]_[Lookback Period]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA length</em><em>, </em><em>Stdev multiple</em><em>, </em><em>Strong Stdev multiple</em><em>, </em><em>Lookback Period</em><em>]</em><em>]</em>) – Nested arrays of Trend, defaults to [[150, 0.06, 0.16, 15]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.vma">
 <code class="sig-name descname"><span class="pre">vma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.vma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Volume Moving Average</p>
@@ -1006,6 +1187,18 @@ RSI, Keltner Channel, Biggest Drop</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of VMA period, defaults to [5, 10, 20]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.wma">
+<code class="sig-name descname"><span class="pre">wma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.wma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weighted Moving Average</p>
+<p>Series named as WMA_[param]. E.g. WMA_5, WMA_10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of WMA period, defaults to [5, 10]</p>
 </dd>
 </dl>
 </dd></dl>
