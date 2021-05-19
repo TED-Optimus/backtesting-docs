@@ -182,5 +182,5 @@ plot heatmap for specific metric
    :linenos:
 
    universe.plot_heatmap('objective_function.csv', 'Maximum Daily Drawdown %', param_row.tolist(),
-                         param_col.tolist(), 'Param row', 'Param col', 15, 10, True,
+                         param_col.tolist(), 'Param col', 'Param row', 15, 10, True,
                          'Drawdown Heatmap.png')

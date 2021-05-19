@@ -118,6 +118,24 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v3.2.1
+################
+
+- Indicator
+   - Parabolic SAR
+- Features
+   - Generate all performance file and performance image in one function
+- Examples
+   - Time stop
+   - Consider commissions and set brokerage fee in portfolio
+   - Sell based on yesterday's condition
+   - View all performances of strategy
+   - Dataframe list for multi period backtesting
+   - Stocks to buy tomorrow at market open
+   - Backtest on different parameters
+   - Plot heatmap for specific metric
+
+################
 CHANGELOG v3.2.0
 ################
 
