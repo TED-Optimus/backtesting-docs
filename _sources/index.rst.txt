@@ -118,6 +118,14 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v3.2.2
+################
+
+- Bug fixes
+   - EMA related
+   - Commissions/ Brokerage Fee
+
+################
 CHANGELOG v3.2.1
 ################
 
