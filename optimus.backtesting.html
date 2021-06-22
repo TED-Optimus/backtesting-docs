@@ -96,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.portfolio">optimus.backtesting.portfolio module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.indicator">optimus.backtesting.indicator module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.selection">optimus.backtesting.selection module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.walk_forward">optimus.backtesting.walk_forward module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting">Module contents</a></li>
 </ul>
 </li>
@@ -105,6 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walk_forward_documentation.html">walk forward documentation</a></li>
 </ul>
 
             
@@ -242,8 +244,8 @@
 </pre></div>
 </td></tr></table></div>
 <p><strong>Results:</strong></p>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">DataFrame 1</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">DataFrame 1</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -271,8 +273,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-text">DataFrame 2</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">DataFrame 2</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -387,7 +389,18 @@
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.generate_all_files">
 <code class="sig-name descname"><span class="pre">generate_all_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strategy_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.performance.Performance.generate_all_files" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generate performances for all files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strategy_name</strong> (<em>string</em>) – folder name of strategy</p></li>
+<li><p><strong>code_path</strong> (<em>file path</em>) – path of code file</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – version of the strategy</p></li>
+<li><p><strong>plot_image</strong> (<em>bool</em>) – save images into folder</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.performance.Performance.gross_loss">
@@ -660,6 +673,12 @@
 <dd class="field-odd"><p>Integer/ Float</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.clear">
+<code class="sig-name descname"><span class="pre">clear</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear portfolio</p>
 </dd></dl>
 
 <dl class="py method">
@@ -991,6 +1010,21 @@ RSI, Keltner Channel, Biggest Drop</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.donchian_channels">
+<code class="sig-name descname"><span class="pre">donchian_channels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.donchian_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Donchian channels</p>
+<p>Series named as DC_Lower_[period], DC_Upper_[period], DC_Basis_[period], DC_Lower_last_[period],
+DC_Upper_last_[period]. E.g. DC_Upper_20.</p>
+<p>DC_Lower_last_[period]: Date of candle that created donchian low
+DC_Upper_last_[period]: Date of candle that created donchian high</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of donchian channels period, defaults to [20]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.ema">
 <code class="sig-name descname"><span class="pre">ema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.ema" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exponential Moving Average</p>
@@ -1003,6 +1037,18 @@ RSI, Keltner Channel, Biggest Drop</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.fibonacci_pullback">
+<code class="sig-name descname"><span class="pre">fibonacci_pullback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.fibonacci_pullback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fibonacci Pullback</p>
+<p>Series named as pullback_[Period]. E.g. pullback_14.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of Donchian channels period to calculate fibonacci pullback, defaults to [14]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.fractal">
 <code class="sig-name descname"><span class="pre">fractal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.fractal" title="Permalink to this definition">¶</a></dt>
 <dd><p>William fractal indicator</p>
@@ -1010,6 +1056,21 @@ RSI, Keltner Channel, Biggest Drop</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of fractal period, defaults to [2,4]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.high_low">
+<code class="sig-name descname"><span class="pre">high_low</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.high_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>High low indicator</p>
+<p>Series named as high_[period], low_[period]. E.g. high_21, low_21.
+Difference with Donchian channel:
+Before specified period - Calculate cumulative high / low
+After specified period - Calculate rolling high / low</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – List[high_low_periods], defaults to [21, 63, 126, 252]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1290,6 +1351,60 @@ RSI, Keltner Channel, Biggest Drop</p>
 <dt id="optimus.backtesting.selection.UniverseSelection.WARRANTS">
 <code class="sig-name descname"><span class="pre">WARRANTS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#optimus.backtesting.selection.UniverseSelection.WARRANTS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-optimus.backtesting.walk_forward">
+<span id="optimus-backtesting-walk-forward-module"></span><h2>optimus.backtesting.walk_forward module<a class="headerlink" href="#module-optimus.backtesting.walk_forward" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="optimus.backtesting.walk_forward.WalkForward">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.walk_forward.</span></code><code class="sig-name descname"><span class="pre">WalkForward</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_ratio_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_ratio_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objective_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backtest</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.walk_forward.WalkForward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Walk forward optimization for multiple dataframe.</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>pandas.DataFrame</em>) – Dataframe of stock data</p></li>
+<li><p><strong>data_set</strong> (<em>int</em>) – Number of data set to be split</p></li>
+<li><p><strong>split_ratio_train</strong> (<em>int</em>) – Split ratio of train set</p></li>
+<li><p><strong>split_ratio_test</strong> (<em>int</em>) – Split ratio of test set</p></li>
+<li><p><strong>objective_function</strong> (<em>str</em>) – Objective function to optimize</p></li>
+<li><p><strong>portfolio</strong> (<a class="reference internal" href="#optimus.backtesting.portfolio.Portfolio" title="optimus.backtesting.portfolio.Portfolio"><em>Portfolio</em></a>) – Portfolio of test set</p></li>
+<li><p><strong>backtest</strong> (<em>types.FunctionType</em>) – Backtest function</p></li>
+<li><p><strong>*args</strong> – <p>values for each parameter to be optimized</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="optimus.backtesting.walk_forward.WalkForward.backtest_test_set">
+<code class="sig-name descname"><span class="pre">backtest_test_set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">complete_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.walk_forward.WalkForward.backtest_test_set" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Start backtest for test set using best params of train set (complete search or prioritized search),
+store results in folder</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>complete_search</strong> (<em>boolean</em>) – true if train set is backtested using complete search, false if train set is backtested
+using prioritized search</p></li>
+<li><p><strong>strategy_name</strong> (<em>string</em>) – folder name of strategy</p></li>
+<li><p><strong>file_path</strong> (<em>file path</em>) – file path for csv file of complete search train set</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.walk_forward.WalkForward.backtest_train_set_complete">
+<code class="sig-name descname"><span class="pre">backtest_train_set_complete</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.walk_forward.WalkForward.backtest_train_set_complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start backtest for train set using complete search.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.walk_forward.WalkForward.backtest_train_set_prioritized">
+<code class="sig-name descname"><span class="pre">backtest_train_set_prioritized</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.walk_forward.WalkForward.backtest_train_set_prioritized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start backtest for train set using prioritized search.</p>
+</dd></dl>
 
 </dd></dl>
 

@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>walk forward documentation &mdash; TED Optimus - backtesting  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TED Optimus - backtesting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="optimus.html">optimus package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">walk forward documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">HOW TO USE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#format-for-backtest-function">Format for backtest function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-walk-forward-library">Use walk forward library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backtest-train-set-using-complete-search">Backtest train set using complete search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backtest-test-set-after-using-train-set-complete-search">Backtest test set after using train set complete search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backtest-train-set-using-prioritized-search">Backtest train set using prioritized search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backtest-test-set-after-using-train-set-prioritized-search">Backtest test set after using train set prioritized search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#things-to-take-note">THINGS TO TAKE NOTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discussions">DISCUSSIONS</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TED Optimus - backtesting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>walk forward documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/walk_forward_documentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="walk-forward-documentation">
+<h1>walk forward documentation<a class="headerlink" href="#walk-forward-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-to-use">
+<h2>HOW TO USE<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="format-for-backtest-function">
+<h3>Format for backtest function<a class="headerlink" href="#format-for-backtest-function" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">backtest</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">pf</span><span class="p">,</span> <span class="n">backtest_df</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+ <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> :param test_set: True if current df is test set, false if current df is train set</span>
+<span class="sd"> :type test_set: bool</span>
+<span class="sd"> :param pf: Portfolio of previous test set</span>
+<span class="sd"> :type pf: Portfolio</span>
+<span class="sd"> :param backtest_df: Df of train set or test set</span>
+<span class="sd"> :type backtest_df: DataFrame</span>
+<span class="sd"> :param params: Values of each parameter</span>
+<span class="sd"> :type params: tuple</span>
+<span class="sd"> :param number: index of current train set</span>
+<span class="sd"> :type number: int</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+
+ <span class="n">df</span> <span class="o">=</span> <span class="n">backtest_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+ <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">paramN</span> <span class="o">=</span> <span class="n">params</span>
+
+ <span class="c1"># Init buy sell signal and portfolio here</span>
+
+ <span class="k">if</span> <span class="n">test_set</span><span class="p">:</span>
+     <span class="n">portfolio</span> <span class="o">=</span> <span class="n">pf</span>
+     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:]</span>
+
+ <span class="c1"># Do backtesting using loop by df date here</span>
+
+ <span class="n">portfolio</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># clear portfolio for next test set</span>
+ <span class="k">if</span> <span class="ow">not</span> <span class="n">test_set</span><span class="p">:</span>
+     <span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="n">performance</span><span class="o">.</span><span class="n">objective_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="o">...</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">paramN</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>  <span class="c1"># record performance into csv file for train set complete search</span>
+     <span class="n">performance</span><span class="o">.</span><span class="n">performance_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="o">...</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">paramN</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;performance_metric.csv&#39;</span><span class="p">)</span>  <span class="c1"># record performance into csv file for train set complete search</span>
+     <span class="k">return</span> <span class="n">performance</span><span class="o">.</span><span class="n">net_profit</span>  <span class="c1"># return your desired objective function</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="use-walk-forward-library">
+<h3>Use walk forward library<a class="headerlink" href="#use-walk-forward-library" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.walk_forward</span> <span class="kn">import</span> <span class="n">WalkForward</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">WalkForward</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">data_set</span><span class="p">,</span> <span class="n">split_ratio_train</span><span class="p">,</span> <span class="n">split_ratio_test</span><span class="p">,</span> <span class="n">objective_function</span><span class="p">,</span> <span class="n">backtest</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="backtest-train-set-using-complete-search">
+<h3>Backtest train set using complete search<a class="headerlink" href="#backtest-train-set-using-complete-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">backtest_train_set_complete</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="backtest-test-set-after-using-train-set-complete-search">
+<h3>Backtest test set after using train set complete search<a class="headerlink" href="#backtest-test-set-after-using-train-set-complete-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">backtest_test_set</span><span class="p">(</span><span class="n">complete_search</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strategy_name</span><span class="o">=</span><span class="s1">&#39;fractal breakout system&#39;</span><span class="p">,</span> <span class="n">file_path</span><span class="o">=</span><span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="backtest-train-set-using-prioritized-search">
+<h3>Backtest train set using prioritized search<a class="headerlink" href="#backtest-train-set-using-prioritized-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">backtest_train_set_prioritized</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="backtest-test-set-after-using-train-set-prioritized-search">
+<h3>Backtest test set after using train set prioritized search<a class="headerlink" href="#backtest-test-set-after-using-train-set-prioritized-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">wf</span><span class="o">.</span><span class="n">backtest_test_set</span><span class="p">(</span><span class="n">complete_search</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">strategy_name</span><span class="o">=</span><span class="s1">&#39;fractal breakout system&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="things-to-take-note">
+<h2>THINGS TO TAKE NOTE<a class="headerlink" href="#things-to-take-note" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>For train set complete search, performance csv file will be generated. Data inside csv file will be used to find best parameter for test set. Hence, make sure not to append performance of current code to performance of previous code if the name of csv file is the same.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>It is not necessary to run ‘wf.backtest_train_set_complete()’ and ‘wf.backtest_test_set(True, ‘your_file_name.csv’)’ together as long as the csv file exists.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>‘wf.backtest_train_set_prioritized()’ and ‘wf.backtest_test_set(complete_search=False)’ must be run together at one time because prioritize search will not save data into csv file, best parameters will be stored in program memory hence backtest test set must be called together.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>Parameter sequence must be the same while writing the params in csv file and getting params from walk forward library.</p></li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="discussions">
+<h2>DISCUSSIONS<a class="headerlink" href="#discussions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Argument &amp; Reason</dt><dd><ul>
+<li><dl class="simple">
+<dt>Argument: Split dataframe set according to trading days, not calendar days</dt><dd><ul>
+<li><p>Reason: Ensure days of all train set and test set are similar (differ by at most 1 trading day).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Does not omit certain data to make days of all trading set equal</dt><dd><ul>
+<li><p>Reason: Include all trading days to ensure accuracy of strategy performance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Train set last date does not overlap with following test set’s first date</dt><dd><ul>
+<li><p>Reason: Ensure data in train set is not used in test set (avoid recurring trades).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Train set first date does not overlap with previous train set’s last date</dt><dd><ul>
+<li><p>Reason: Ensure same trade does not appear in two train set.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Test set first date does not overlap with previous test set’s last date</dt><dd><ul>
+<li><p>Reason: Ensure same trade does not appear in two test set.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Test set extend 10 extra trading days in front</dt><dd><ul>
+<li><p>Reason: First 10 days are only used to generate signal such that able to trade on first trading day of test set.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Train set does not extend 10 extra trading days in front</dt><dd><ul>
+<li><p>Reason: Not necessary to extend train set to initiate signal as length of train set is generally larger than test set.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: All performances of train set complete search will be stored in csv file</dt><dd><ul>
+<li><p>Reason: Can backtest test set immediately according to any objective function as csv file contains all information.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Argument: Train set prioritized search will not store best parameters in csv file</dt><dd><ul>
+<li><p>Reason: Due to the nature of prioritized search which will search different parameters each time for different objective
+function, best parameters will not be stored in csv file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="examples.html" class="btn btn-neutral float-left" title="examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, TED Optimus.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

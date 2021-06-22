@@ -44,6 +44,14 @@ optimus.backtesting.selection module
    :undoc-members:
    :show-inheritance:
 
+optimus.backtesting.walk_forward module
+----------------------------------------
+
+.. automodule:: optimus.backtesting.walk_forward
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

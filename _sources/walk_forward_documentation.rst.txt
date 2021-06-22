@@ -1,0 +1,117 @@
+walk forward documentation
+============================
+
+HOW TO USE
+"""""""""""
+
+#############################
+Format for backtest function
+#############################
+.. code-block:: python
+   :linenos:
+
+   def backtest(test_set, pf, backtest_df, params, number):
+    """
+    :param test_set: True if current df is test set, false if current df is train set
+    :type test_set: bool
+    :param pf: Portfolio of previous test set
+    :type pf: Portfolio
+    :param backtest_df: Df of train set or test set
+    :type backtest_df: DataFrame
+    :param params: Values of each parameter
+    :type params: tuple
+    :param number: index of current train set
+    :type number: int
+    """
+
+    df = backtest_df.copy()
+    param1, param2, ..., paramN = params
+
+    # Init buy sell signal and portfolio here
+
+    if test_set:
+        portfolio = pf
+        df = df.iloc[10:]
+
+    # Do backtesting using loop by df date here
+
+    portfolio.clear()  # clear portfolio for next test set
+    if not test_set:
+        performance = Performance(portfolio, show=False)
+        performance.objective_function(need_print=False)
+        performance.performance_metric(need_print=False)
+        performance.objective_to_csv(f'{number}_{param1}_{param2}_{...}_{paramN}', 'objective_function.csv')  # record performance into csv file for train set complete search
+        performance.performance_to_csv(f'{number}_{param1}_{param2}_{...}_{paramN}', 'performance_metric.csv')  # record performance into csv file for train set complete search
+        return performance.net_profit  # return your desired objective function
+
+#########################
+Use walk forward library
+#########################
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.walk_forward import WalkForward
+   wf = WalkForward(df, data_set, split_ratio_train, split_ratio_test, objective_function, backtest, *args)
+
+#########################################
+Backtest train set using complete search
+#########################################
+.. code-block:: python
+   :linenos:
+
+   wf.backtest_train_set_complete()
+
+########################################################
+Backtest test set after using train set complete search
+########################################################
+.. code-block:: python
+   :linenos:
+
+   wf.backtest_test_set(complete_search=True, strategy_name='fractal breakout system', file_path='objective_function.csv')
+
+############################################
+Backtest train set using prioritized search
+############################################
+.. code-block:: python
+   :linenos:
+
+   wf.backtest_train_set_prioritized()
+
+###########################################################
+Backtest test set after using train set prioritized search
+###########################################################
+.. code-block:: python
+   :linenos:
+
+   wf.backtest_test_set(complete_search=False, strategy_name='fractal breakout system')
+
+THINGS TO TAKE NOTE
+""""""""""""""""""""
+- 1) For train set complete search, performance csv file will be generated. Data inside csv file will be used to find best parameter for test set. Hence, make sure not to append performance of current code to performance of previous code if the name of csv file is the same.
+- 2) It is not necessary to run 'wf.backtest_train_set_complete()' and 'wf.backtest_test_set(True, 'your_file_name.csv')' together as long as the csv file exists.
+- 3) 'wf.backtest_train_set_prioritized()' and 'wf.backtest_test_set(complete_search=False)' must be run together at one time because prioritize search will not save data into csv file, best parameters will be stored in program memory hence backtest test set must be called together.
+- 4) Parameter sequence must be the same while writing the params in csv file and getting params from walk forward library.
+
+DISCUSSIONS
+""""""""""""
+
+- Argument & Reason
+   - Argument: Split dataframe set according to trading days, not calendar days
+      - Reason: Ensure days of all train set and test set are similar (differ by at most 1 trading day).
+   - Argument: Does not omit certain data to make days of all trading set equal
+      - Reason: Include all trading days to ensure accuracy of strategy performance.
+   - Argument: Train set last date does not overlap with following test set's first date
+      - Reason: Ensure data in train set is not used in test set (avoid recurring trades).
+   - Argument: Train set first date does not overlap with previous train set's last date
+      - Reason: Ensure same trade does not appear in two train set.
+   - Argument: Test set first date does not overlap with previous test set's last date
+      - Reason: Ensure same trade does not appear in two test set.
+   - Argument: Test set extend 10 extra trading days in front
+      - Reason: First 10 days are only used to generate signal such that able to trade on first trading day of test set.
+   - Argument: Train set does not extend 10 extra trading days in front
+      - Reason: Not necessary to extend train set to initiate signal as length of train set is generally larger than test set.
+   - Argument: All performances of train set complete search will be stored in csv file
+      - Reason: Can backtest test set immediately according to any objective function as csv file contains all information.
+   - Argument: Train set prioritized search will not store best parameters in csv file
+      - Reason: Due to the nature of prioritized search which will search different parameters each time for different objective
+        function, best parameters will not be stored in csv file.

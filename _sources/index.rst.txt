@@ -118,6 +118,20 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v3.3.0
+################
+
+- Indicator
+   - Donchian channel
+   - High low
+   - Fibonacci pullback
+- Features
+   - Portfolio clear
+   - Walk forward module (NEW!)
+- Documentation
+   - Walk forward
+
+################
 CHANGELOG v3.2.2
 ################
 
@@ -209,3 +223,4 @@ CHANGELOG v2.0.0
 
    optimus
    examples
+   walk_forward_documentation
