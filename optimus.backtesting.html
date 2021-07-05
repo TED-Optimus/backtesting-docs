@@ -107,6 +107,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="walk_forward_documentation.html">walk forward documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flowchart.html">flowchart documentation</a></li>
 </ul>
 
             
@@ -607,12 +608,14 @@
 <span id="optimus-backtesting-portfolio-module"></span><h2>optimus.backtesting.portfolio module<a class="headerlink" href="#module-optimus.backtesting.portfolio" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="optimus.backtesting.portfolio.Portfolio">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.portfolio.</span></code><code class="sig-name descname"><span class="pre">Portfolio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position_sizing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.PositionSizing" title="optimus.backtesting.selection.PositionSizing"><span class="pre">optimus.backtesting.selection.PositionSizing</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_capital</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">take_profit</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cut_loss</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.08</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commission</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brokerage_fee</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.08</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.portfolio.</span></code><code class="sig-name descname"><span class="pre">Portfolio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">df:</span> <span class="pre">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="pre">equity_model:</span> <span class="pre">optimus.backtesting.selection.EquityModel</span> <span class="pre">=</span> <span class="pre">&lt;EquityModel.CORE_EQUITY:</span> <span class="pre">1&gt;</span></em>, <em class="sig-param"><span class="pre">position_sizing:</span> <span class="pre">optimus.backtesting.selection.PositionSizing</span> <span class="pre">=</span> <span class="pre">&lt;PositionSizing.EQUAL_UNIT:</span> <span class="pre">1&gt;</span></em>, <em class="sig-param"><span class="pre">initial_capital:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">100000</span></em>, <em class="sig-param"><span class="pre">size:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">10</span></em>, <em class="sig-param"><span class="pre">take_profit:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">cut_loss:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.08</span></em>, <em class="sig-param"><span class="pre">commission:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></em>, <em class="sig-param"><span class="pre">brokerage_fee:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.08</span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Constructs a Portfolio</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe used to calculate portfolio value</p></li>
+<li><p><strong>equity_model</strong> (<a class="reference internal" href="#optimus.backtesting.selection.EquityModel" title="optimus.backtesting.selection.EquityModel"><em>EquityModel</em></a>) – Must be an instance of EquityModel</p></li>
 <li><p><strong>position_sizing</strong> (<a class="reference internal" href="#optimus.backtesting.selection.PositionSizing" title="optimus.backtesting.selection.PositionSizing"><em>PositionSizing</em></a>) – Must be an instance of PositionSizing</p></li>
 <li><p><strong>initial_capital</strong> (<em>int</em>) – Initial capital allocated for the portfolio</p></li>
 <li><p><strong>size</strong> (<em>int</em>) – Portfolio size</p></li>
@@ -647,7 +650,7 @@
 
 <dl class="py method">
 <dt id="optimus.backtesting.portfolio.Portfolio.buy">
-<code class="sig-name descname"><span class="pre">buy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allocation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tp_price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.buy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">buy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tp_price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_price</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.buy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a buy transaction. If successful ticker will be added into portfolio and added into transaction list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -655,13 +658,25 @@
 <li><p><strong>ticker</strong> – ticker symbol</p></li>
 <li><p><strong>date</strong> – order date</p></li>
 <li><p><strong>price</strong> – order price</p></li>
-<li><p><strong>allocation</strong> – capital allocated for this ticker</p></li>
 <li><p><strong>index</strong> – index of open date, used to compute holding days</p></li>
 <li><p><strong>tp_price</strong> – Custom take profit price</p></li>
 <li><p><strong>cl_price</strong> – Custom cut loss price</p></li>
+<li><p><strong>risk_percent</strong> – percentage of equity to risk (percent volatility &amp; percent risk model)</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.calculate_commission">
+<code class="sig-name descname"><span class="pre">calculate_commission</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.calculate_commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate commission given unit size and price</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.calculate_position_size">
+<code class="sig-name descname"><span class="pre">calculate_position_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">risk_percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cl_price</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.calculate_position_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate position size based on equity model and position size model</p>
 </dd></dl>
 
 <dl class="py method">
@@ -715,6 +730,12 @@
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.get_equity">
+<code class="sig-name descname"><span class="pre">get_equity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.get_equity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get equity based on different models</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.portfolio.Portfolio.holding">
 <code class="sig-name descname"><span class="pre">holding</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.holding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Portfolio holding</p>
@@ -745,6 +766,12 @@
 <dd class="field-odd"><p>List of portfolio holdings’ ticker list</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.portfolio.Portfolio.portfolio_value">
+<code class="sig-name descname"><span class="pre">portfolio_value</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.portfolio.Portfolio.portfolio_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate portfolio value given specific date</p>
 </dd></dl>
 
 <dl class="py method">
@@ -828,7 +855,7 @@
 <p>Series named as ADX_[ADX Smoothing]_[DI Length], ADXR_[ADX Smoothing]_[DI Length]_[Lookback Period]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>ADX Smoothing</em><em>, </em><em>DI Length</em><em>, </em><em>Lookback Period</em><em>]</em><em>]</em>) – Nested arrays of ADXR, defaults to [[14, 14, 14]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[ADX Smoothing, DI Length, Lookback Period]], defaults to [[14, 14, 14]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -884,7 +911,7 @@ RSI, Keltner Channel, Biggest Drop</p>
 <p>Series named as LowerBand_[MA]_[STD], MiddleBand_[MA]_[STD], UpperBand_[MA]_[STD], BbWidth_[MA]_[STD]. E.g. LowerBand_20_2, MiddleBand_20_2, UpperBand_20_2, BbWidth_20_2</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>STD</em><em>]</em><em>]</em>) – Nested arrays of bollinger bands params, defaults to [[20, 2], [20, 3]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[MA, STD]], defaults to [[20, 2], [20, 3]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1061,6 +1088,19 @@ DC_Upper_last_[period]: Date of candle that created donchian high</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.fractal_breakout">
+<code class="sig-name descname"><span class="pre">fractal_breakout</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.fractal_breakout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fractal breakout indicator
+Calculate breakout percentage from fractal high</p>
+<p>Series named as breakout%_[period].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of fractal breakout period, defaults to [3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.high_low">
 <code class="sig-name descname"><span class="pre">high_low</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.high_low" title="Permalink to this definition">¶</a></dt>
 <dd><p>High low indicator</p>
@@ -1094,7 +1134,7 @@ After specified period - Calculate rolling high / low</p>
 <p>Series named as KelChU_[MA]_[ATR]_[Multiplier], KelChD_[MA]_[ATR]_[Multiplier], squeeze_[MA]_[ATR]_[Multiplier]. E.g. KelChU_[20]_[20]_[1.5], KelChD_[20]_[20]_[1.5], squeeze_[20]_[20]_[1.5]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA</em><em>, </em><em>ATR</em><em>, </em><em>Multiplier</em><em>]</em><em>]</em>) – Nested arrays of keltner channel, defaults to [[20, 20, 1.5]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>]</em><em>]</em>) – List[List[MA, ATR, Multiplier]], defaults to [[20, 20, 1.5]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1112,7 +1152,7 @@ After specified period - Calculate rolling high / low</p>
 <p>Series named as MACD_[fast]_[slow]_[ema], MACDsign_[fast]_[slow]_[ema], MACDdiff_[fast]_[slow]_[ema]. E.g. MACD_12_26_9.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>SMA Fast</em><em>, </em><em>SMA Slow</em><em>, </em><em>EMA</em><em>]</em><em>]</em>) – Nested arrays of MACD params, defaults to [[12, 26, 9]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[SMA Fast, SMA Slow, EMA]], defaults to [[12, 26, 9]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1146,12 +1186,24 @@ After specified period - Calculate rolling high / low</p>
 
 <dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.parabolic_sar">
-<code class="sig-name descname"><span class="pre">parabolic_sar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.parabolic_sar" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">parabolic_sar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.parabolic_sar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parabolic SAR</p>
 <p>Series named as SAR_[start]_[increment]_[maxValue]. E.g. SAR_0.02_0.02_0.2</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Start</em><em>, </em><em>Increment</em><em>, </em><em>Max value</em><em>]</em><em>]</em>) – Nested arrays of SAR params, defaults to [[0.02, 0.02, 0.2]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>]</em><em>]</em>) – List[List[Start, Increment, Max value]], defaults to [[0.02, 0.02, 0.2]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.percentage_change">
+<code class="sig-name descname"><span class="pre">percentage_change</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.percentage_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Percentage change indicator (today against yesterday)</p>
+<p>Series named as percentage_change</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – defaults to True</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1205,6 +1257,24 @@ After specified period - Calculate rolling high / low</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.smart_money">
+<code class="sig-name descname"><span class="pre">smart_money</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.smart_money" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimus smart money indicator</p>
+<p>Series named as:
+retailer_[banker_base]_[banker_rsi_period]_[hot_money_rsi_base]_[hot_money_rsi_period]_[sensitivity_banker]_[sensitivity_hot_money]_[banker_ma]_[retailer_ma]
+hotMoney_[banker_base]_[banker_rsi_period]_[hot_money_rsi_base]_[hot_money_rsi_period]_[sensitivity_banker]_[sensitivity_hot_money]_[banker_ma]_[retailer_ma]
+banker_[banker_base]_[banker_rsi_period]_[hot_money_rsi_base]_[hot_money_rsi_period]_[sensitivity_banker]_[sensitivity_hot_money]_[banker_ma]_[retailer_ma]
+bankerMA_[banker_base]_[banker_rsi_period]_[hot_money_rsi_base]_[hot_money_rsi_period]_[sensitivity_banker]_[sensitivity_hot_money]_[banker_ma]_[retailer_ma]
+retailerMA_[banker_base]_[banker_rsi_period]_[hot_money_rsi_base]_[hot_money_rsi_period]_[sensitivity_banker]_[sensitivity_hot_money]_[banker_ma]_[retailer_ma]
+E.g. retailer_50_50_30_40_1.5_0.7_10_10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[banker_base, banker_rsi_period, hot_money_rsi_base, hot_money_rsi_period, sensitivity_banker, sensitivity_hot_money, banker_ma, retailer_ma]], defaults to [[50_50_30_40_1.5_0.7_10_10]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.smma">
 <code class="sig-name descname"><span class="pre">smma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.smma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smoothed Moving Average</p>
@@ -1223,7 +1293,7 @@ After specified period - Calculate rolling high / low</p>
 <p>Series named as STC_[fast]_[slow]_[percK]_[percD]_[stc].</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>EMA Fast</em><em>, </em><em>EMA Slow</em><em>, </em><em>Stoch %K Length</em><em>, </em><em>Stocj %D Length</em><em>, </em><em>STC Length</em><em>]</em><em>]</em>) – Nested arrays of STC params, defaults to [[23, 50, 10, 3, 3]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[EMA Fast, EMA Slow, Stoch %K Length, Stoch %D Length, STC Length]], defaults to [[23, 50, 10, 3, 3]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1235,19 +1305,19 @@ After specified period - Calculate rolling high / low</p>
 <p>Series named as SOk_[Period]_[MA], SOd_[Period]_[MA]. E.g. SOk_14_3, SOd_14_3.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Period</em><em>, </em><em>MA</em><em>]</em><em>]</em>) – Nested arrays of stochastic params, defaults to [[14, 3]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>]</em>) – List[List[Period, MA]], defaults to [[14, 3]]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.trend">
-<code class="sig-name descname"><span class="pre">trend</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.trend" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">trend</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.trend" title="Permalink to this definition">¶</a></dt>
 <dd><p>Trend</p>
 <p>Series named as Trend_[MA length]_[Stdev multiple]_[Strong Stdev multiple]_[Lookback Period]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>MA length</em><em>, </em><em>Stdev multiple</em><em>, </em><em>Strong Stdev multiple</em><em>, </em><em>Lookback Period</em><em>]</em><em>]</em>) – Nested arrays of Trend, defaults to [[150, 0.06, 0.16, 15]]</p>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>]</em><em>]</em>) – List[List[MA length, Stdev multiple, Strong Stdev multiple, Lookback Period]], defaults to [[150, 0.06, 0.16, 15]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1276,6 +1346,18 @@ After specified period - Calculate rolling high / low</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.ytd_change">
+<code class="sig-name descname"><span class="pre">ytd_change</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.ytd_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Year to date change (in percent) indicator</p>
+<p>Series named as ytd_change</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – defaults to True</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -1299,6 +1381,28 @@ After specified period - Calculate rolling high / low</p>
 </dd></dl>
 
 <dl class="py class">
+<dt id="optimus.backtesting.selection.EquityModel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.selection.</span></code><code class="sig-name descname"><span class="pre">EquityModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.selection.EquityModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="optimus.backtesting.selection.EquityModel.CORE_EQUITY">
+<code class="sig-name descname"><span class="pre">CORE_EQUITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#optimus.backtesting.selection.EquityModel.CORE_EQUITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="optimus.backtesting.selection.EquityModel.REDUCED_TOTAL_EQUITY">
+<code class="sig-name descname"><span class="pre">REDUCED_TOTAL_EQUITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#optimus.backtesting.selection.EquityModel.REDUCED_TOTAL_EQUITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="optimus.backtesting.selection.EquityModel.TOTAL_EQUITY">
+<code class="sig-name descname"><span class="pre">TOTAL_EQUITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#optimus.backtesting.selection.EquityModel.TOTAL_EQUITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="optimus.backtesting.selection.PositionSizing">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.selection.</span></code><code class="sig-name descname"><span class="pre">PositionSizing</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.selection.PositionSizing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
@@ -1306,6 +1410,16 @@ After specified period - Calculate rolling high / low</p>
 <dl class="py attribute">
 <dt id="optimus.backtesting.selection.PositionSizing.EQUAL_UNIT">
 <code class="sig-name descname"><span class="pre">EQUAL_UNIT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#optimus.backtesting.selection.PositionSizing.EQUAL_UNIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="optimus.backtesting.selection.PositionSizing.PERCENT_RISK">
+<code class="sig-name descname"><span class="pre">PERCENT_RISK</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#optimus.backtesting.selection.PositionSizing.PERCENT_RISK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="optimus.backtesting.selection.PositionSizing.PERCENT_VOLATILITY">
+<code class="sig-name descname"><span class="pre">PERCENT_VOLATILITY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#optimus.backtesting.selection.PositionSizing.PERCENT_VOLATILITY" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

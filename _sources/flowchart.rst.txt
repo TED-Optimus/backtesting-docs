@@ -1,0 +1,33 @@
+flowchart documentation
+============================
+|
+
+Flowchart: Trading strategy
+""""""""""""""""""""""""""""
+.. image:: flowchart_trading_strategy.png
+
+|
+|
+
+Flowchart: walk forward - main
+"""""""""""""""""""""""""""""""
+.. image:: flowchart_walk_forward_main.png
+
+|
+|
+
+Flowchart: walk forward - backtest
+"""""""""""""""""""""""""""""""""""
+.. image:: flowchart_walk_forward_backtest.png
+
+|
+|
+
+Hyperlinks to documentation
+"""""""""""""""""""""""""""""
+| Data module: `Data <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.data>`_
+| Performance module:`Performance <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.performance>`_
+| Portfolio module: `Portfolio <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.portfolio>`_
+| Indicator module:`Indicator <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.indicator>`_
+| Selection module:`Selection <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.selection>`_
+| Walk forward module:`Walk forward <https://backtesting.tedoptimus.com/optimus.backtesting.html#module-optimus.backtesting.walk_forward>`_

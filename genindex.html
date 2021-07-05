@@ -87,6 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="optimus.html">optimus package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="walk_forward_documentation.html">walk forward documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flowchart.html">flowchart documentation</a></li>
 </ul>
 
             
@@ -177,6 +178,7 @@
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -236,6 +238,10 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.calculate_commission">calculate_commission() (optimus.backtesting.portfolio.Portfolio method)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.calculate_position_size">calculate_position_size() (optimus.backtesting.portfolio.Portfolio method)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.candle_bearish_abandoned_baby">candle_bearish_abandoned_baby() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.candle_bearish_engulfing">candle_bearish_engulfing() (optimus.backtesting.indicator.Indicator method)</a>
@@ -265,6 +271,8 @@
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.clear">clear() (optimus.backtesting.portfolio.Portfolio method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.commission">commission() (optimus.backtesting.portfolio.Portfolio property)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.EquityModel.CORE_EQUITY">CORE_EQUITY (optimus.backtesting.selection.EquityModel attribute)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.cut_loss">cut_loss() (optimus.backtesting.portfolio.Portfolio property)</a>
 </li>
@@ -298,6 +306,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="optimus.backtesting.html#optimus.backtesting.selection.PositionSizing.EQUAL_UNIT">EQUAL_UNIT (optimus.backtesting.selection.PositionSizing attribute)</a>
 </li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.EquityModel">EquityModel (class in optimus.backtesting.selection)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.selection.Reason.EXIT">EXIT (optimus.backtesting.selection.Reason attribute)</a>
 </li>
   </ul></td>
@@ -308,9 +318,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.fibonacci_pullback">fibonacci_pullback() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.fractal">fractal() (optimus.backtesting.indicator.Indicator method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.fractal">fractal() (optimus.backtesting.indicator.Indicator method)</a>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.fractal_breakout">fractal_breakout() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.free">free() (optimus.backtesting.portfolio.Portfolio method)</a>
 </li>
@@ -321,6 +333,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.generate_all_files">generate_all_files() (optimus.backtesting.performance.Performance method)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.get_equity">get_equity() (optimus.backtesting.portfolio.Portfolio method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -511,6 +525,12 @@
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.percent_profitable">percent_profitable() (optimus.backtesting.performance.Performance property)</a>
 </li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.PositionSizing.PERCENT_RISK">PERCENT_RISK (optimus.backtesting.selection.PositionSizing attribute)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.PositionSizing.PERCENT_VOLATILITY">PERCENT_VOLATILITY (optimus.backtesting.selection.PositionSizing attribute)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.percentage_change">percentage_change() (optimus.backtesting.indicator.Indicator method)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance">Performance (class in optimus.backtesting.performance)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.performance_metric">performance_metric() (optimus.backtesting.performance.Performance method)</a>
@@ -519,15 +539,17 @@
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.pivot">pivot() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
-      <li><a href="optimus.backtesting.html#optimus.backtesting.data.Universe.plot_heatmap">plot_heatmap() (optimus.backtesting.data.Universe method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.data.Universe.plot_heatmap">plot_heatmap() (optimus.backtesting.data.Universe method)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.plot_objective_function">plot_objective_function() (optimus.backtesting.performance.Performance method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.plot_performance_metric">plot_performance_metric() (optimus.backtesting.performance.Performance method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio">Portfolio (class in optimus.backtesting.portfolio)</a>
+</li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.portfolio_value">portfolio_value() (optimus.backtesting.portfolio.Portfolio method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.selection.PositionSizing">PositionSizing (class in optimus.backtesting.selection)</a>
 </li>
@@ -549,6 +571,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.EquityModel.REDUCED_TOTAL_EQUITY">REDUCED_TOTAL_EQUITY (optimus.backtesting.selection.EquityModel attribute)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.roc">roc() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.rsi">rsi() (optimus.backtesting.indicator.Indicator method)</a>
@@ -569,9 +593,11 @@
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.size">size() (optimus.backtesting.portfolio.Portfolio property)</a>
 </li>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.sma">sma() (optimus.backtesting.indicator.Indicator method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.sma">sma() (optimus.backtesting.indicator.Indicator method)</a>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.smart_money">smart_money() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.smma">smma() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
@@ -591,12 +617,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.take_profit">take_profit() (optimus.backtesting.portfolio.Portfolio property)</a>
 </li>
-      <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.total_number_of_trades">total_number_of_trades() (optimus.backtesting.performance.Performance property)</a>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.EquityModel.TOTAL_EQUITY">TOTAL_EQUITY (optimus.backtesting.selection.EquityModel attribute)</a>
 </li>
-      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.Reason.TP">TP (optimus.backtesting.selection.Reason attribute)</a>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.total_number_of_trades">total_number_of_trades() (optimus.backtesting.performance.Performance property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.selection.Reason.TP">TP (optimus.backtesting.selection.Reason attribute)</a>
+</li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.portfolio.Portfolio.transactions">transactions() (optimus.backtesting.portfolio.Portfolio property)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.performance.Performance.transactions_to_csv">transactions_to_csv() (optimus.backtesting.performance.Performance method)</a>
@@ -636,6 +664,14 @@
       <li><a href="optimus.backtesting.html#optimus.backtesting.selection.UniverseSelection.WARRANTS">WARRANTS (optimus.backtesting.selection.UniverseSelection attribute)</a>
 </li>
       <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.wma">wma() (optimus.backtesting.indicator.Indicator method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="optimus.backtesting.html#optimus.backtesting.indicator.Indicator.ytd_change">ytd_change() (optimus.backtesting.indicator.Indicator method)</a>
 </li>
   </ul></td>
 </tr></table>

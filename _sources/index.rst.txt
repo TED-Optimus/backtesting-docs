@@ -118,6 +118,37 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v4.0.0
+################
+
+- Indicator
+   - Fractal breakout indicator
+   - Smart money indicator
+   - Percentage change indicator
+   - Year to date change indicator
+
+- Portfolio
+   - Get position size based on equity model and position size model
+   - Get portfolio value given specific date
+   - Get equity based on different models
+   - Get commission given unit size and price
+
+- Equity models
+   - 1) Core equity
+   - 2) Total equity
+   - 3) Reduced total equity
+
+- Position sizing models
+   - 1) Equal unit
+   - 2) Percent volatility
+   - 3) Percent risk
+
+- Ted Optimus flowcharts
+   - Trading strategy
+   - Walk forward - main
+   - Walk forward - backtest
+
+################
 CHANGELOG v3.3.0
 ################
 
@@ -224,3 +255,4 @@ CHANGELOG v2.0.0
    optimus
    examples
    walk_forward_documentation
+   flowchart
