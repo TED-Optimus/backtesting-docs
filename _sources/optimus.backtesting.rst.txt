@@ -52,6 +52,14 @@ optimus.backtesting.walk_forward module
    :undoc-members:
    :show-inheritance:
 
+optimus.backtesting.tick_data module
+----------------------------------------
+
+.. automodule:: optimus.backtesting.tick_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

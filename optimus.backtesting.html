@@ -97,6 +97,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.indicator">optimus.backtesting.indicator module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.selection">optimus.backtesting.selection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.walk_forward">optimus.backtesting.walk_forward module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting.tick_data">optimus.backtesting.tick_data module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-optimus.backtesting">Module contents</a></li>
 </ul>
 </li>
@@ -186,14 +187,13 @@
 <span id="optimus-backtesting-data-module"></span><h2>optimus.backtesting.data module<a class="headerlink" href="#module-optimus.backtesting.data" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="optimus.backtesting.data.Universe">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.data.</span></code><code class="sig-name descname"><span class="pre">Universe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection"><span class="pre">optimus.backtesting.selection.UniverseSelection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><span class="pre">optimus.backtesting.indicator.Indicator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_run</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.data.</span></code><code class="sig-name descname"><span class="pre">Universe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection"><span class="pre">optimus.backtesting.selection.UniverseSelection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><span class="pre">optimus.backtesting.indicator.Indicator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_run</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.data.Universe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">optimus.backtesting.api_key.ApiKey</span></code></p>
 <p><strong>Generate an Universe for backtesting</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>selection</strong> (<a class="reference internal" href="#optimus.backtesting.selection.UniverseSelection" title="optimus.backtesting.selection.UniverseSelection"><em>UniverseSelection</em></a>) – Stocks, Warrants, or Indices</p></li>
-<li><p><strong>api_key</strong> (<em>str</em>) – API Key</p></li>
 <li><p><strong>indicator</strong> (<a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><em>Indicator</em></a>) – Indicator</p></li>
 <li><p><strong>auto_run</strong> (<em>bool</em>) – Computation, defaults to True</p></li>
 </ul>
@@ -245,8 +245,8 @@
 </pre></div>
 </td></tr></table></div>
 <p><strong>Results:</strong></p>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">DataFrame 1</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">DataFrame 1</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -274,8 +274,8 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-text">DataFrame 2</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">DataFrame 2</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 67%" />
 <col style="width: 33%" />
@@ -1101,6 +1101,18 @@ Calculate breakout percentage from fractal high</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.gainer_loser">
+<code class="sig-name descname"><span class="pre">gainer_loser</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.gainer_loser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gainer loser indicator</p>
+<p>Series named as gainer_loser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – defaults to True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="optimus.backtesting.indicator.Indicator.high_low">
 <code class="sig-name descname"><span class="pre">high_low</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.high_low" title="Permalink to this definition">¶</a></dt>
 <dd><p>High low indicator</p>
@@ -1188,7 +1200,8 @@ After specified period - Calculate rolling high / low</p>
 <dt id="optimus.backtesting.indicator.Indicator.parabolic_sar">
 <code class="sig-name descname"><span class="pre">parabolic_sar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.parabolic_sar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parabolic SAR</p>
-<p>Series named as SAR_[start]_[increment]_[maxValue]. E.g. SAR_0.02_0.02_0.2</p>
+<p>Series named as SAR_[start]_[increment]_[maxValue], SAR_status_[start]_[increment]_[maxValue].
+E.g. SAR_0.02_0.02_0.2.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>, </em><em>Union</em><em>[</em><em>int</em><em>, </em><em>float</em><em>]</em><em>]</em><em>]</em>) – List[List[Start, Increment, Max value]], defaults to [[0.02, 0.02, 0.2]]</p>
@@ -1252,6 +1265,19 @@ After specified period - Calculate rolling high / low</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of SMA period, defaults to [5, 10, 13, 20, 26, 50, 150, 200]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.sma_ema">
+<code class="sig-name descname"><span class="pre">sma_ema</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.sma_ema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sma_ema indicator</p>
+<p>Series named as breadth_sma5_[confidence_level], breadth_ema4_[confidence_level]. E.g. breadth_sma5_75</p>
+<p>Confidence level is restricted to 75, 80, 85, 90.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>]</em><em>]</em>) – List[List[Union[sma5/ema4, confidence_level]]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1330,6 +1356,18 @@ E.g. retailer_50_50_30_40_1.5_0.7_10_10.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of VMA period, defaults to [5, 10, 20]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.indicator.Indicator.volume_average">
+<code class="sig-name descname"><span class="pre">volume_average</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.indicator.Indicator.volume_average" title="Permalink to this definition">¶</a></dt>
+<dd><p>Volume average</p>
+<p>Series named as volume_average_[param]. E.g. volume_average_10.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – Arrays of volume average period, defaults to [10]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1457,6 +1495,11 @@ E.g. retailer_50_50_30_40_1.5_0.7_10_10.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
+<dt id="optimus.backtesting.selection.UniverseSelection.INDICES">
+<code class="sig-name descname"><span class="pre">INDICES</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#optimus.backtesting.selection.UniverseSelection.INDICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="optimus.backtesting.selection.UniverseSelection.STOCKS">
 <code class="sig-name descname"><span class="pre">STOCKS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#optimus.backtesting.selection.UniverseSelection.STOCKS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1486,8 +1529,7 @@ E.g. retailer_50_50_30_40_1.5_0.7_10_10.</p>
 <li><p><strong>objective_function</strong> (<em>str</em>) – Objective function to optimize</p></li>
 <li><p><strong>portfolio</strong> (<a class="reference internal" href="#optimus.backtesting.portfolio.Portfolio" title="optimus.backtesting.portfolio.Portfolio"><em>Portfolio</em></a>) – Portfolio of test set</p></li>
 <li><p><strong>backtest</strong> (<em>types.FunctionType</em>) – Backtest function</p></li>
-<li><p><strong>*args</strong> – <p>values for each parameter to be optimized</p>
-</p></li>
+<li><p><strong>*args</strong> (<em>args</em>) – values for each parameter to be optimized</p></li>
 </ul>
 </dd>
 </dl>
@@ -1518,6 +1560,56 @@ using prioritized search</p></li>
 <dt id="optimus.backtesting.walk_forward.WalkForward.backtest_train_set_prioritized">
 <code class="sig-name descname"><span class="pre">backtest_train_set_prioritized</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.walk_forward.WalkForward.backtest_train_set_prioritized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start backtest for train set using prioritized search.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-optimus.backtesting.tick_data">
+<span id="optimus-backtesting-tick-data-module"></span><h2>optimus.backtesting.tick_data module<a class="headerlink" href="#module-optimus.backtesting.tick_data" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="optimus.backtesting.tick_data.TickData">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">optimus.backtesting.tick_data.</span></code><code class="sig-name descname"><span class="pre">TickData</span></code><a class="headerlink" href="#optimus.backtesting.tick_data.TickData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Generate a DataFrame for tick data</strong></p>
+<dl class="py method">
+<dt id="optimus.backtesting.tick_data.TickData.get_TA">
+<code class="sig-name descname"><span class="pre">get_TA</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indicator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><span class="pre">optimus.backtesting.indicator.Indicator</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.tick_data.TickData.get_TA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get technical indicators for a timeframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeframe</strong> (<em>string</em>) – Desired timeframe</p></li>
+<li><p><strong>indicator</strong> (<a class="reference internal" href="#optimus.backtesting.indicator.Indicator" title="optimus.backtesting.indicator.Indicator"><em>Indicator</em></a>) – Desired indicators</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.tick_data.TickData.get_timeframe">
+<code class="sig-name descname"><span class="pre">get_timeframe</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.tick_data.TickData.get_timeframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a timeframe given a date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeframe</strong> (<em>string</em>) – Desired timeframe</p></li>
+<li><p><strong>date</strong> (<em>string</em>) – Desired date</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="optimus.backtesting.tick_data.TickData.resample">
+<code class="sig-name descname"><span class="pre">resample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#optimus.backtesting.tick_data.TickData.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample intraday timeframe from tick data dataframe and save into file</p>
+<p>Intraday timeframe examples: min, H</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeframe</strong> (<em>string</em>) – Desired timeframe</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

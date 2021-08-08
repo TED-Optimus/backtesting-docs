@@ -30,7 +30,7 @@ take profit
    :linenos:
 
    # take profit can be set when initializing portfolio
-   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10, take_profit=0.34, cut_loss=0.1)
+   portfolio = Portfolio(df, EquityModel.CORE_EQUITY, PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10, take_profit=0.34, cut_loss=0.1)
 
    for index, frame in tqdm(df.groupby('date'), "Backtesting"):
       days_count = frame.index[0]
@@ -73,8 +73,8 @@ consider commissions and set brokerage fee in portfolio
 .. code-block:: python
    :linenos:
 
-   portfolio = Portfolio(PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10, take_profit=None, cut_loss=0.1,
-                         commission=True, brokerage_fee=0.08)
+   portfolio = Portfolio(df, EquityModel.CORE_EQUITY, PositionSizing.EQUAL_UNIT, initial_capital=100000, size=10,
+                         take_profit=None, cut_loss=0.1, commission=True, brokerage_fee=0.08)
 
 sell based on yesterday's condition
 """"""""""""""""""""""""""""""""""""
@@ -133,7 +133,7 @@ stocks to buy tomorrow at market open
    # Init df_today
    today = datetime.today().strftime('%Y-%m-%d')
    today = pd.to_datetime(today)
-   mask = df.index == today
+   mask = df.index.date == today
    df_today = df[mask]
    df_today.set_index('ticker', inplace=True)
 
@@ -143,9 +143,8 @@ stocks to buy tomorrow at market open
    df_today = df_today.loc[
                   (df_today['buy_signal_today'].values != 0) & (~df_today.index.isin(portfolio.list()))].sort_values(
        'buy_signal_today', ascending=False)[:portfolio.free()]
-   allocation = portfolio.allocation()
    for item in df_today.index.to_list():
-       portfolio.buy(item, today, df_today.loc[item, 'close'], allocation, today)
+       portfolio.buy(item, today, df_today.loc[item, 'close'], today)
        buy.append(item)
    print(f'Buy tomorrow at market open: {buy}')
 
@@ -184,3 +183,46 @@ plot heatmap for specific metric
    universe.plot_heatmap('objective_function.csv', 'Maximum Daily Drawdown %', param_row.tolist(),
                          param_col.tolist(), 'Param col', 'Param row', 15, 10, True,
                          'Drawdown Heatmap.png')
+
+generate tick data
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.tick_data import TickData
+   tick_data = TickData()
+   df = tick_data.df
+   print(df)
+
+resample a timeframe from tick data
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.tick_data import TickData
+   tick_data.resample('15min')
+
+get dataframe of a timeframe
+""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.tick_data import TickData
+   timeframe_df = tick_data.get_timeframe('15min', '2021-07-12')
+   print(timeframe_df)
+
+get technical analysis of a timeframe
+""""""""""""""""""""""""""""""""""""""""
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.tick_data import TickData
+   indicator = Indicator()
+   indicator.sma([50])
+   indicator.parabolic_sar()
+   ta_df = tick_data.get_TA('5min', indicator)
+   print(ta_df)
