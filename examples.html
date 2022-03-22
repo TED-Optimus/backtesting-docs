@@ -1,70 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>examples &mdash; TED Optimus - backtesting  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="walk forward documentation" href="walk_forward_documentation.html" />
     <link rel="prev" title="optimus.backtesting package" href="optimus.backtesting.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> TED Optimus - backtesting
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -72,19 +36,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="optimus.html">optimus package</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">examples</a><ul>
@@ -106,433 +59,264 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="walk_forward_documentation.html">walk forward documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flowchart.html">flowchart documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance_aggregator_documentation.html">performance aggregator documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualizer_documentation.html">visualizer documentation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">TED Optimus - backtesting</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>examples</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="examples">
-<h1>examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="trailing-stop-loss">
-<h2>trailing stop loss<a class="headerlink" href="#trailing-stop-loss" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s1">&#39;Backtesting&#39;</span><span class="p">):</span>
-   <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-     <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-   <span class="c1"># Sell if stop loss is hit</span>
-   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-      <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-
-   <span class="c1"># Trailing stop loss</span>
-   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-      <span class="n">stop_percentage</span> <span class="o">=</span> <span class="mf">0.25</span>
-      <span class="n">trailing_stop_price</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stop_percentage</span><span class="p">)</span>  <span class="c1"># Trail stop 25% below current high</span>
-      <span class="k">if</span> <span class="n">trailing_stop_price</span> <span class="o">&gt;</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-          <span class="n">portfolio</span><span class="o">.</span><span class="n">set_cut_loss_price</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">trailing_stop_price</span><span class="p">)</span>
+             
+  <section id="examples">
+<h1>examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h1>
+<section id="trailing-stop-loss">
+<h2>trailing stop loss<a class="headerlink" href="#trailing-stop-loss" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s1">&#39;Backtesting&#39;</span><span class="p">):</span>
+<span class="linenos"> 2</span>   <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 3</span>     <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>   <span class="c1"># Sell if stop loss is hit</span>
+<span class="linenos"> 6</span>   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+<span class="linenos"> 7</span>      <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+<span class="linenos"> 8</span>          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>   <span class="c1"># Trailing stop loss</span>
+<span class="linenos">11</span>   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+<span class="linenos">12</span>      <span class="n">stop_percentage</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="linenos">13</span>      <span class="n">trailing_stop_price</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">stop_percentage</span><span class="p">)</span>  <span class="c1"># Trail stop 25% below current high</span>
+<span class="linenos">14</span>      <span class="k">if</span> <span class="n">trailing_stop_price</span> <span class="o">&gt;</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+<span class="linenos">15</span>          <span class="n">portfolio</span><span class="o">.</span><span class="n">set_cut_loss_price</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">trailing_stop_price</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="take-profit">
-<h2>take profit<a class="headerlink" href="#take-profit" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># take profit can be set when initializing portfolio</span>
-<span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">EquityModel</span><span class="o">.</span><span class="n">CORE_EQUITY</span><span class="p">,</span> <span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">take_profit</span><span class="o">=</span><span class="mf">0.34</span><span class="p">,</span> <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
-   <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-   <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-      <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-
-      <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-
-      <span class="k">elif</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># examples for take profit</span>
-          <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">]:</span>
-              <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">TP</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-
-<span class="c1"># take profit can be overrode by calling portfolio.buy(..., tp_price= ?)</span>
+</section>
+<section id="take-profit">
+<h2>take profit<a class="headerlink" href="#take-profit" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># take profit can be set when initializing portfolio</span>
+<span class="linenos"> 2</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">EquityModel</span><span class="o">.</span><span class="n">CORE_EQUITY</span><span class="p">,</span> <span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">take_profit</span><span class="o">=</span><span class="mf">0.34</span><span class="p">,</span> <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
+<span class="linenos"> 5</span>   <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 6</span>   <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>   <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+<span class="linenos"> 9</span>      <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+<span class="linenos">10</span>          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">CL</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>      <span class="k">elif</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos">13</span>          <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>      <span class="k">elif</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># examples for take profit</span>
+<span class="linenos">16</span>          <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">]:</span>
+<span class="linenos">17</span>              <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">TP</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;take_profit&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># take profit can be overrode by calling portfolio.buy(..., tp_price= ?)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="time-stop">
-<h2>time stop<a class="headerlink" href="#time-stop" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span>
-                          <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>  <span class="c1"># loop dataframe by date</span>
-    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># date</span>
-    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># set ticker as index</span>
-
-    <span class="c1"># Check portfolio and sell if stop loss is hit</span>
-    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">]:</span>  <span class="c1"># 10 days sell signal</span>
-            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+</section>
+<section id="time-stop">
+<h2>time stop<a class="headerlink" href="#time-stop" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;buy_signal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span>
+<span class="linenos"> 2</span>                          <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2000-01-01&#39;</span><span class="p">))</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>  <span class="c1"># loop dataframe by date</span>
+<span class="linenos"> 5</span>    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># date</span>
+<span class="linenos"> 6</span>    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># set ticker as index</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>    <span class="c1"># Check portfolio and sell if stop loss is hit</span>
+<span class="linenos"> 9</span>    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+<span class="linenos">10</span>        <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;sell_signal&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;open_date&#39;</span><span class="p">]:</span>  <span class="c1"># 10 days sell signal</span>
+<span class="linenos">11</span>            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="consider-commissions-and-set-brokerage-fee-in-portfolio">
-<h2>consider commissions and set brokerage fee in portfolio<a class="headerlink" href="#consider-commissions-and-set-brokerage-fee-in-portfolio" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">EquityModel</span><span class="o">.</span><span class="n">CORE_EQUITY</span><span class="p">,</span> <span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                      <span class="n">take_profit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">commission</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">brokerage_fee</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+</section>
+<section id="consider-commissions-and-set-brokerage-fee-in-portfolio">
+<h2>consider commissions and set brokerage fee in portfolio<a class="headerlink" href="#consider-commissions-and-set-brokerage-fee-in-portfolio" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">portfolio</span> <span class="o">=</span> <span class="n">Portfolio</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">EquityModel</span><span class="o">.</span><span class="n">CORE_EQUITY</span><span class="p">,</span> <span class="n">PositionSizing</span><span class="o">.</span><span class="n">EQUAL_UNIT</span><span class="p">,</span> <span class="n">initial_capital</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="linenos">2</span>                      <span class="n">take_profit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cut_loss</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">commission</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">brokerage_fee</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="sell-based-on-yesterday-s-condition">
-<h2>sell based on yesterday’s condition<a class="headerlink" href="#sell-based-on-yesterday-s-condition" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">yesterday_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
-    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
-        <span class="c1"># Sell at market open if previous bar close below SL</span>
-        <span class="k">if</span> <span class="n">yesterday_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
-            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
-
-    <span class="n">yesterday_frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Update yesterday frame</span>
+</section>
+<section id="sell-based-on-yesterday-s-condition">
+<h2>sell based on yesterday’s condition<a class="headerlink" href="#sell-based-on-yesterday-s-condition" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">yesterday_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">),</span> <span class="s2">&quot;Backtesting&quot;</span><span class="p">):</span>
+<span class="linenos"> 4</span>    <span class="n">days_count</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 5</span>    <span class="n">frame</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="k">for</span> <span class="n">ticker</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">portfolio</span><span class="o">.</span><span class="n">holding</span><span class="p">():</span>
+<span class="linenos"> 8</span>        <span class="c1"># Sell at market open if previous bar close below SL</span>
+<span class="linenos"> 9</span>        <span class="k">if</span> <span class="n">yesterday_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;cut_loss&#39;</span><span class="p">]:</span>
+<span class="linenos">10</span>            <span class="n">portfolio</span><span class="o">.</span><span class="n">sell</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">Reason</span><span class="o">.</span><span class="n">EXIT</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">days_count</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="n">yesterday_frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Update yesterday frame</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="view-all-performances-of-strategy">
-<h2>view all performances of strategy<a class="headerlink" href="#view-all-performances-of-strategy" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">()</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">transactions_to_csv</span><span class="p">()</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">objective_to_csv</span><span class="p">(</span><span class="s1">&#39;strategy 1&#39;</span><span class="p">,</span> <span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">performance_to_csv</span><span class="p">(</span><span class="s1">&#39;performance 1&#39;</span><span class="p">,</span> <span class="s1">&#39;performance_metric.csv&#39;</span><span class="p">)</span>
-<span class="n">performance</span><span class="o">.</span><span class="n">generate_all_files</span><span class="p">(</span><span class="n">strategy_name</span><span class="o">=</span><span class="s1">&#39;strategy_name&#39;</span><span class="p">,</span> <span class="n">code_path</span><span class="o">=</span><span class="s1">&#39;file_name.py&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span>
-                               <span class="n">plot_image</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</section>
+<section id="view-all-performances-of-strategy">
+<h2>view all performances of strategy<a class="headerlink" href="#view-all-performances-of-strategy" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">performance</span><span class="o">.</span><span class="n">transactions_to_csv</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">performance</span><span class="o">.</span><span class="n">objective_to_csv</span><span class="p">(</span><span class="s1">&#39;strategy 1&#39;</span><span class="p">,</span> <span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">performance</span><span class="o">.</span><span class="n">performance_to_csv</span><span class="p">(</span><span class="s1">&#39;performance 1&#39;</span><span class="p">,</span> <span class="s1">&#39;performance_metric.csv&#39;</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">performance</span><span class="o">.</span><span class="n">generate_all_files</span><span class="p">(</span><span class="n">strategy_name</span><span class="o">=</span><span class="s1">&#39;strategy_name&#39;</span><span class="p">,</span> <span class="n">code_path</span><span class="o">=</span><span class="s1">&#39;file_name.py&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span>
+<span class="linenos">8</span>                               <span class="n">plot_image</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="dataframe-list-for-multi-period-backtesting">
-<h2>dataframe list for multi period backtesting<a class="headerlink" href="#dataframe-list-for-multi-period-backtesting" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">date1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">)</span>
-<span class="n">date2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
-<span class="n">date3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span>
-<span class="n">df_list</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">df_multi_period</span><span class="p">(</span><span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">date3</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">df_list</span><span class="p">:</span>
-<span class="c1"># do backtesting</span>
+</section>
+<section id="dataframe-list-for-multi-period-backtesting">
+<h2>dataframe list for multi period backtesting<a class="headerlink" href="#dataframe-list-for-multi-period-backtesting" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">date1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">date2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">date3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">df_list</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">df_multi_period</span><span class="p">(</span><span class="n">date1</span><span class="p">,</span> <span class="n">date2</span><span class="p">,</span> <span class="n">date3</span><span class="p">)</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">df_list</span><span class="p">:</span>
+<span class="linenos">7</span><span class="c1"># do backtesting</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="stocks-to-buy-tomorrow-at-market-open">
-<h2>stocks to buy tomorrow at market open<a class="headerlink" href="#stocks-to-buy-tomorrow-at-market-open" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Init df_today</span>
-<span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">today</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">today</span>
-<span class="n">df_today</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">df_today</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Stocks to buy tomorrow</span>
-<span class="n">buy</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;buy_signal_today&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;turnover&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000000</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;turnover&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">df_today</span> <span class="o">=</span> <span class="n">df_today</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
-               <span class="p">(</span><span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;buy_signal_today&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">df_today</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-    <span class="s1">&#39;buy_signal_today&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">df_today</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
-    <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">today</span><span class="p">,</span> <span class="n">df_today</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">today</span><span class="p">)</span>
-    <span class="n">buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Buy tomorrow at market open: </span><span class="si">{</span><span class="n">buy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</section>
+<section id="stocks-to-buy-tomorrow-at-market-open">
+<h2>stocks to buy tomorrow at market open<a class="headerlink" href="#stocks-to-buy-tomorrow-at-market-open" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Init df_today</span>
+<span class="linenos"> 2</span><span class="n">today</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">today</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">today</span>
+<span class="linenos"> 5</span><span class="n">df_today</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="linenos"> 6</span><span class="n">df_today</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Stocks to buy tomorrow</span>
+<span class="linenos"> 9</span><span class="n">buy</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">10</span><span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;buy_signal_today&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;turnover&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000000</span><span class="p">),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;turnover&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">df_today</span> <span class="o">=</span> <span class="n">df_today</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+<span class="linenos">12</span>               <span class="p">(</span><span class="n">df_today</span><span class="p">[</span><span class="s1">&#39;buy_signal_today&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">df_today</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">portfolio</span><span class="o">.</span><span class="n">list</span><span class="p">()))]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+<span class="linenos">13</span>    <span class="s1">&#39;buy_signal_today&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">portfolio</span><span class="o">.</span><span class="n">free</span><span class="p">()]</span>
+<span class="linenos">14</span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">df_today</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+<span class="linenos">15</span>    <span class="n">portfolio</span><span class="o">.</span><span class="n">buy</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">today</span><span class="p">,</span> <span class="n">df_today</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">item</span><span class="p">,</span> <span class="s1">&#39;close&#39;</span><span class="p">],</span> <span class="n">today</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">buy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Buy tomorrow at market open: </span><span class="si">{</span><span class="n">buy</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="backtest-on-different-parameters">
-<h2>backtest on different parameters<a class="headerlink" href="#backtest-on-different-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">backtest</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
-    <span class="c1"># do backtesting</span>
-
-    <span class="c1"># record performance into csv</span>
-    <span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">performance</span><span class="o">.</span><span class="n">objective_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>
-    <span class="n">performance</span><span class="o">.</span><span class="n">performance_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;performance_metric.csv&#39;</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># Init indicator and signal</span>
-
-    <span class="c1"># Backtest</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">param1_list</span><span class="p">:</span>  <span class="c1"># row</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">param2_list</span><span class="p">:</span>  <span class="c1"># col</span>
-            <span class="n">backtest</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</section>
+<section id="backtest-on-different-parameters">
+<h2>backtest on different parameters<a class="headerlink" href="#backtest-on-different-parameters" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">backtest</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="c1"># do backtesting</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>    <span class="c1"># record performance into csv</span>
+<span class="linenos"> 5</span>    <span class="n">performance</span> <span class="o">=</span> <span class="n">Performance</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 6</span>    <span class="n">performance</span><span class="o">.</span><span class="n">objective_function</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 7</span>    <span class="n">performance</span><span class="o">.</span><span class="n">performance_metric</span><span class="p">(</span><span class="n">need_print</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 8</span>    <span class="n">performance</span><span class="o">.</span><span class="n">objective_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;objective_function.csv&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>    <span class="n">performance</span><span class="o">.</span><span class="n">performance_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">param1</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">param2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;performance_metric.csv&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos">13</span>    <span class="c1"># Init indicator and signal</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>    <span class="c1"># Backtest</span>
+<span class="linenos">16</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">param1_list</span><span class="p">:</span>  <span class="c1"># row</span>
+<span class="linenos">17</span>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">param2_list</span><span class="p">:</span>  <span class="c1"># col</span>
+<span class="linenos">18</span>            <span class="n">backtest</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="plot-heatmap-for-specific-metric">
-<h2>plot heatmap for specific metric<a class="headerlink" href="#plot-heatmap-for-specific-metric" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">universe</span><span class="o">.</span><span class="n">plot_heatmap</span><span class="p">(</span><span class="s1">&#39;objective_function.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum Daily Drawdown %&#39;</span><span class="p">,</span> <span class="n">param_row</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
-                      <span class="n">param_col</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="s1">&#39;Param col&#39;</span><span class="p">,</span> <span class="s1">&#39;Param row&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
-                      <span class="s1">&#39;Drawdown Heatmap.png&#39;</span><span class="p">)</span>
+</section>
+<section id="plot-heatmap-for-specific-metric">
+<h2>plot heatmap for specific metric<a class="headerlink" href="#plot-heatmap-for-specific-metric" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">universe</span><span class="o">.</span><span class="n">plot_heatmap</span><span class="p">(</span><span class="s1">&#39;objective_function.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum Daily Drawdown %&#39;</span><span class="p">,</span> <span class="n">param_row</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+<span class="linenos">2</span>                      <span class="n">param_col</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="s1">&#39;Param col&#39;</span><span class="p">,</span> <span class="s1">&#39;Param row&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">3</span>                      <span class="s1">&#39;Drawdown Heatmap.png&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="generate-tick-data">
-<h2>generate tick data<a class="headerlink" href="#generate-tick-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
-<span class="n">tick_data</span> <span class="o">=</span> <span class="n">TickData</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">df</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</section>
+<section id="generate-tick-data">
+<h2>generate tick data<a class="headerlink" href="#generate-tick-data" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
+<span class="linenos">2</span><span class="n">tick_data</span> <span class="o">=</span> <span class="n">TickData</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">df</span>
+<span class="linenos">4</span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="resample-a-timeframe-from-tick-data">
-<h2>resample a timeframe from tick data<a class="headerlink" href="#resample-a-timeframe-from-tick-data" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
-<span class="n">tick_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;15min&#39;</span><span class="p">)</span>
+</section>
+<section id="resample-a-timeframe-from-tick-data">
+<h2>resample a timeframe from tick data<a class="headerlink" href="#resample-a-timeframe-from-tick-data" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
+<span class="linenos">2</span><span class="n">tick_data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;15min&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="get-dataframe-of-a-timeframe">
-<h2>get dataframe of a timeframe<a class="headerlink" href="#get-dataframe-of-a-timeframe" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
-<span class="n">timeframe_df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">get_timeframe</span><span class="p">(</span><span class="s1">&#39;15min&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-07-12&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">timeframe_df</span><span class="p">)</span>
+</section>
+<section id="get-dataframe-of-a-timeframe">
+<h2>get dataframe of a timeframe<a class="headerlink" href="#get-dataframe-of-a-timeframe" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
+<span class="linenos">2</span><span class="n">timeframe_df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">get_timeframe</span><span class="p">(</span><span class="s1">&#39;15min&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-07-12&#39;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">timeframe_df</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="get-technical-analysis-of-a-timeframe">
-<h2>get technical analysis of a timeframe<a class="headerlink" href="#get-technical-analysis-of-a-timeframe" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
-<span class="n">indicator</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">()</span>
-<span class="n">indicator</span><span class="o">.</span><span class="n">sma</span><span class="p">([</span><span class="mi">50</span><span class="p">])</span>
-<span class="n">indicator</span><span class="o">.</span><span class="n">parabolic_sar</span><span class="p">()</span>
-<span class="n">ta_df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">get_TA</span><span class="p">(</span><span class="s1">&#39;5min&#39;</span><span class="p">,</span> <span class="n">indicator</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ta_df</span><span class="p">)</span>
+</section>
+<section id="get-technical-analysis-of-a-timeframe">
+<h2>get technical analysis of a timeframe<a class="headerlink" href="#get-technical-analysis-of-a-timeframe" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">optimus.backtesting.tick_data</span> <span class="kn">import</span> <span class="n">TickData</span>
+<span class="linenos">2</span><span class="n">indicator</span> <span class="o">=</span> <span class="n">Indicator</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">indicator</span><span class="o">.</span><span class="n">sma</span><span class="p">([</span><span class="mi">50</span><span class="p">])</span>
+<span class="linenos">4</span><span class="n">indicator</span><span class="o">.</span><span class="n">parabolic_sar</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">ta_df</span> <span class="o">=</span> <span class="n">tick_data</span><span class="o">.</span><span class="n">get_TA</span><span class="p">(</span><span class="s1">&#39;5min&#39;</span><span class="p">,</span> <span class="n">indicator</span><span class="p">)</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">ta_df</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
 </div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="walk_forward_documentation.html" class="btn btn-neutral float-right" title="walk forward documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="optimus.backtesting.html" class="btn btn-neutral float-left" title="optimus.backtesting package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="walk_forward_documentation.html" class="btn btn-neutral float-right" title="walk forward documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, TED Optimus.
-
-    </p>
+    <p>&#169; Copyright 2021, TED Optimus.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
