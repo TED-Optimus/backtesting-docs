@@ -1,0 +1,320 @@
+visualizer documentation
+========================
+- After users generated transaction file from backtesting, they can visualize each transaction entry and exit in Candlestick chart with this library.
+
+HOW TO USE
+"""""""""""
+
+###############################
+Example for visualizer function
+###############################
+.. code-block:: python
+   :linenos:
+
+   import numpy as np
+   import pandas as pd
+
+   from optimus.backtesting.data import Universe, UniverseSelection
+   from optimus.backtesting.indicator import Indicator
+   from optimus.backtesting.performance import Performance
+   from optimus.backtesting.portfolio import Portfolio
+   from optimus.backtesting.selection import EquityModel, PositionSizing, Reason
+
+   # Step 1. Import visualizer
+   from optimus.backtesting.visualizer import Visualizer
+
+   if __name__ == "__main__":
+       # Desired output option
+       desired_width = 1000
+       pd.set_option("display.width", desired_width)
+       pd.set_option("display.max_columns", 15)
+
+       # Step 2. Initialize stock price data with desired indicator(s).
+       indicator = Indicator()
+       indicator.sma([20, 50])
+       indicator.rsi([2, 5])
+       indicator.roc([100])
+       indicator.average_daily_turnover([50])
+       indicator.candle_bearish_engulfing()
+
+       # Initializing universe
+       universe = Universe(selection=UniverseSelection.STOCKS, indicator=indicator)
+       df = universe.df
+
+       """
+       Entry Rules:
+       1) RSI(2) < 5
+       2) Close > SMA(50)
+
+       Exit Rules:
+       1) RSI(5) > 40
+       2) Exit if entered for more than 10 days
+
+       Ranking Criteria:
+       Rank stocks based on Rate of change(100)
+       """
+
+       # Step 3. [Optional] Create custom indicator(s), eg: df["bearish_pinbar"].
+       threshold = df["low"] + 1 / 3 * (df["high"] - df["low"])
+       df["bearish_pinbar"] = np.where(
+           (df["close"] < threshold) & (df["open"] < threshold), True, False
+       )
+
+       # Entry signal
+       df["buy_signal"] = np.where(
+           (df["average_daily_turnover_50"].shift(1) >= 2500000)
+           & (df["close"].shift(1) > 0.3)
+           & (df["close"].shift(1) > df["SMA_50"].shift(1))
+           & (df["RSI_2"].shift(1) < 5)
+           & (df["ticker"] == df["ticker"].shift(1)),
+           df["ROC_100"].shift(1),
+           0,
+       )
+       df["buy_signal"] = df["buy_signal"].fillna(0)
+
+       # Exit signal
+       df["sell_signal"] = np.where(
+           (df["RSI_5"].shift(1) > 40)
+           & (df["ticker"] == df["ticker"].shift(1)),
+           1,
+           0
+       )
+
+       # Time stop
+       df["buy_date"] = df.index
+       df["sell_signal_2"] = np.where(
+           (df["buy_signal"].shift(10) != 0) & (df["ticker"] == df["ticker"].shift(10)),
+           df["buy_date"].shift(10).dt.date,
+           pd.to_datetime("2000-01-01"),
+       )
+
+       # Step 4. Backup price dataframe before resetting index to non-datetime type.
+       df_drawing = df.copy()
+
+       # Initializing portfolio
+       portfolio = Portfolio(
+           df,
+           EquityModel.TOTAL_EQUITY,
+           PositionSizing.EQUAL_UNIT,
+           initial_capital=int(1e5),
+           size=10
+       )
+
+       # Step 5. [Optional] Backtest your strategy and save the transaction data into a csv file. No need to re-run if using same transaction from previous run.
+       # Backtesting starts here!
+       for index, frame in df.groupby("date"):
+           days_count = pd.Timedelta(days = frame.index[0])
+           frame.set_index("ticker", inplace=True)
+
+           for ticker, info in portfolio.holding():
+               if frame.loc[ticker, "sell_signal_2"] == info["open_date"].date():  # 10 days sell signal
+                   portfolio.sell(
+                       ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                   )
+               elif frame.loc[ticker, "sell_signal"] == 1:
+                   portfolio.sell(
+                       ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                   )
+
+           yesterday_frame = frame.copy()
+
+           # Sort remaining stocks that have buy signals by momentum (High to low)
+           frame = frame.loc[
+               (frame["buy_signal"].values != 0) & (~frame.index.isin(portfolio.list()))
+           ].sort_values("buy_signal", ascending=False)[: portfolio.free()]
+
+           # Retrieve portfolio allocation
+           for item in frame.index.to_list():
+               portfolio.buy(
+                   item,
+                   index,
+                   frame.loc[item, "open"],
+                   days_count
+               )
+
+
+       # Measuring performance
+       performance = Performance(portfolio, show=False)
+       # Step 5b. Save the transaction from backtesting
+       performance.transactions_to_csv("transaction.csv")
+       performance.objective_function(need_print=False)
+       performance.performance_metric(need_print=False)
+
+       # Visualization for transaction
+       # Step 6. Initialize visualizer with dataframe and transaction file.
+       visualizer = Visualizer(df_drawing, path_to_transaction_file="transaction.csv")
+
+       # Step 7. Add indicators based on existing columns in dataframe.
+       visualizer.add_line_indicator(column_name="SMA_20", graph_id=1)  # adding SMA_20 as line drawing on Candlestick chart
+       visualizer.add_line_indicator("RSI_2", 3)  # adding RSI_2 as line drawing to a new row
+       visualizer.add_bar_indicator("SMA_50", 4)  # adding SMA_50 as bar chart drawing to a new row
+       visualizer.add_marker_indicator("candle_bearish_engulfing_3", 1)  # adding markers based on candle_bearish_engulfing_3 on Candlestick chart
+       visualizer.add_marker_indicator("bearish_pinbar", 1) # adding custom indicator to Candlestick chart
+
+       # Step 8. Create figures ordered by a column from transaction file.
+       visualizer.create_figures(column="profit", n=10, ascending=False, window=14, show=True)
+
+       # Step 9. Save figures in html on local directory
+       visualizer.save_figures("temp_plotly.html")
+
+#########################
+Import visualizer library
+#########################
+- Import the library at the beginning of Python script
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.visualizer import Visualizer
+
+#############################################
+Initialize stock price data with indicator(s)
+#############################################
+- Initialize a stock price data with indicators that will be visualized later
+
+.. code-block:: python
+   :linenos:
+
+    indicator = Indicator()
+    indicator.sma([20, 50])
+    indicator.rsi([2, 5])
+    indicator.roc([100])
+    indicator.average_daily_turnover([50])
+    indicator.candle_bearish_engulfing()
+
+    # Initializing universe
+    universe = Universe(selection=UniverseSelection.STOCKS, indicator=indicator)
+    df = universe.df
+
+######################################
+[Optional] Create custom indicators(s)
+######################################
+- Create custom indicators(s) that will be visualized later
+
+.. code-block:: python
+   :linenos:
+
+   threshold = df["low"] + 1 / 3 * (df["high"] - df["low"])
+    df["bearish_pinbar"] = np.where(
+        (df["close"] < threshold) & (df["open"] < threshold), True, False
+    )
+
+#######################
+Backup stock price data
+#######################
+- Backup stock price dataframe to another variable in order to avoid messing up the dataframe index datetime format
+
+.. code-block:: python
+   :linenos:
+
+   df_drawing = df.copy()
+
+################################################################################
+[Optional] Backtest your strategy and save the transaction data into a csv file.
+################################################################################
+- No need to backtest again if you're using transaction from previous run for visualization
+
+.. code-block:: python
+   :linenos:
+
+       for index, frame in df.groupby("date"):
+        days_count = pd.Timedelta(days = frame.index[0])
+        frame.set_index("ticker", inplace=True)
+
+        for ticker, info in portfolio.holding():
+            if frame.loc[ticker, "sell_signal_2"] == info["open_date"].date():  # 10 days sell signal
+                portfolio.sell(
+                    ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                )
+            elif frame.loc[ticker, "sell_signal"] == 1:
+                portfolio.sell(
+                    ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                )
+
+        yesterday_frame = frame.copy()
+
+        # Sort remaining stocks that have buy signals by momentum (High to low)
+        frame = frame.loc[
+            (frame["buy_signal"].values != 0) & (~frame.index.isin(portfolio.list()))
+        ].sort_values("buy_signal", ascending=False)[: portfolio.free()]
+
+        # Retrieve portfolio allocation
+        for item in frame.index.to_list():
+            portfolio.buy(
+                item,
+                index,
+                frame.loc[item, "open"],
+                days_count
+            )
+
+
+    # Measuring performance
+    performance = Performance(portfolio, show=False)
+    # Step 5b. Save the transaction from backtested strategy
+    performance.transactions_to_csv("transaction.csv")
+    performance.objective_function(need_print=False)
+    performance.performance_metric(need_print=False)
+
+#######################################
+Initialize a visualizer for transaction
+#######################################
+- Pass in the stock price dataframe and transaction csv file generated from your backtesting
+
+.. code-block:: python
+   :linenos:
+
+    visualizer = Visualizer(df_drawing, path_to_transaction_file="transaction.csv")
+
+###################################################################
+Add indicator(s) based on stock price dataframe into the visualizer
+###################################################################
+- define the indicators that you want to visualize based on indicators that are already in the stock price dataframe
+- 3 types of drawings are supported:
+
+   - line chart drawing for number type indicator input: visualizer.add_line_indicator(column_name="SMA_20", graph_id=1)
+   - bar chart drawing for number type indicator input: visualizer.add_bar_indicator("SMA_50", 4)
+   - marker chart drawing for boolean type indicator input: visualizer.add_marker_indicator("candle_bearish_engulfing_3", 1)
+
+- user can display indicator on price chart, volume chart or new row of chart based on graph_id:
+
+   - when graph_id = 1, the indicator will be displayed on Candlestick chart (eg, SMA_50, 1)
+   - when graph_id = 2, the indicator will be displayed on volume chart
+   - when graph_id > 2, the indicator will be displayed on a new row of chart (eg, RSI_2, 3)
+
+.. code-block:: python
+   :linenos:
+
+   visualizer.add_line_indicator(column_name="SMA_20", graph_id=1)  # adding SMA_20 as line drawing on Candlestick chart
+   visualizer.add_line_indicator("RSI_2", 3)  # adding RSI_2 as line drawing to a new row
+   visualizer.add_bar_indicator("SMA_50", 4)  # adding SMA_50 as bar chart drawing to a new row
+   visualizer.add_marker_indicator("candle_bearish_engulfing_3", 1)  # adding markers based on candle_bearish_engulfing_3 on Candlestick chart
+   visualizer.add_marker_indicator("bearish_pinbar", 1) # adding custom indicator to Candlestick chart
+
+
+########################################################
+Create figures ordered by a column from transaction file
+########################################################
+- generate figures based on 4 parameters:
+   1) column: a column in transaction file that will be used for ordering completed transaction (eg, "profit" or "gain/loss")
+   2) n: number of completed transaction to display (eg, 10 = visualizing 10 figures)
+   3) ascending: column's value order by either True (from smallest to largest) or False (from largest to smallest)
+   4) window: display number of bars before entry and after exit (eg, 14 = 14 bars before entry and 14 bars after exit)
+
+   - [Optional] show: True (display the figures after being generated) or False (no display is needed)
+   - [Optional] row_heights: the size of each chart (eg, [0.7,0.1,0.1,0.1] means 70% height for Candlestick chart, 10% height for volume chart, 10% for 3rd row chart, 10% for 4th row chart)
+
+.. code-block:: python
+   :linenos:
+
+   #  Generate top 10 figures based on "profit" column in transaction file, and display it afterward
+   visualizer.create_figures(column="profit", n=5, ascending=False, row_heights=[0.7,0.1,0.1,0.1], window=14, show=True)
+
+#######################################
+Save figures in html to local directory
+#######################################
+- save figures to local file in html format after being generated with visualizer.create_figures() function
+
+.. code-block:: python
+   :linenos:
+
+    visualizer.save_figures("figures.html")

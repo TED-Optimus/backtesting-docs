@@ -115,6 +115,13 @@ Common Usage:
    performance.performance_metric()
 
 ################
+CHANGELOG v5.1.0
+################
+- Features
+   - Added visualizer
+   - Added performance aggregator
+
+################
 CHANGELOG v5.0.0
 ################
 
@@ -275,3 +282,5 @@ CHANGELOG v2.0.0
    examples
    walk_forward_documentation
    flowchart
+   performance_aggregator_documentation
+   visualizer_documentation

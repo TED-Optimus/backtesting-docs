@@ -1,0 +1,211 @@
+performance aggregator documentation
+====================================
+- When backtesting a strategy for multiple periods, this library helps user to gather 5 performance metrics and saves to a local csv file. The metrics are:
+
+   1) CAGR/Max drawdown
+   2) Sharpe ratio
+   3) SQN
+   4) PROM (%)
+   5) Average win/ Average loss
+
+HOW TO USE
+"""""""""""
+
+###########################################
+Example for performance aggregator function
+###########################################
+.. code-block:: python
+   :linenos:
+
+   # RSI + SMA_50 oversold system
+
+   import numpy as np
+   import pandas as pd
+
+   from optimus.backtesting.data import Universe, UniverseSelection
+   from optimus.backtesting.indicator import Indicator
+   from optimus.backtesting.performance import Performance
+   from optimus.backtesting.portfolio import Portfolio
+   from optimus.backtesting.selection import EquityModel, PositionSizing, Reason
+
+   # Step 1. Import performance aggregator
+   from optimus.backtesting.performance_aggregator import PerformanceAggregator
+
+   # Press the green button in the gutter to run the script.
+
+   if __name__ == "__main__":
+       # Desired output option
+       desired_width = 1000
+       pd.set_option("display.width", desired_width)
+       pd.set_option("display.max_columns", 15)
+
+       indicator = Indicator()
+       indicator.sma([50])
+       indicator.rsi([2, 5])
+       indicator.roc([100])
+       indicator.average_daily_turnover([50])
+
+       # Initializing universe
+       universe = Universe(selection=UniverseSelection.STOCKS, indicator=indicator)
+       df = universe.df
+
+       date_2016 = pd.to_datetime("2016-01-01")
+       date_2017 = pd.to_datetime("2017-01-01")
+       date_2018 = pd.to_datetime("2018-01-01")
+       date_2019 = pd.to_datetime("2019-01-01")
+       date_2020 = pd.to_datetime("2020-01-01")
+       date_2021 = pd.to_datetime("2021-01-01")
+       date_2022 = pd.to_datetime("2022-01-01")
+
+       df_list = universe.df_multi_period(date_2016, date_2017, date_2018, date_2019, date_2020, date_2021, date_2022)
+       df_list.insert(0, df[(df.index>date_2016) & (df.index<date_2022)])  # [Optional] generate data from year 2016 to 2022, and insert the generated "overall" period dataframe at the front
+
+       # Step 2. Initialize a performance aggregator
+       result_aggregator = PerformanceAggregator()
+
+       """
+       Entry Rules:
+       1) RSI(2) < 5
+       2) Close > SMA(50)
+
+       Exit Rules:
+       1) RSI(5) > 40
+       2) Exit if entered for more than 10 days
+
+       Ranking Criteria:
+       Rank stocks based on Rate of change(100)
+       """
+
+       for df in df_list:
+
+           # Step 3. Get the dates from first and last row for CAGR calculation
+           first_day = df.index[0]
+           last_day = df.index[-1]
+
+           # Entry signal
+           df["buy_signal"] = np.where(
+               (df["average_daily_turnover_50"].shift(1) >= 2500000)
+               & (df["close"].shift(1) > 0.3)
+               & (df["close"].shift(1) > df["SMA_50"].shift(1))
+               & (df["RSI_2"].shift(1) < 5)
+               & (df["ticker"] == df["ticker"].shift(1)),
+               df["ROC_100"].shift(1),
+               0,
+           )
+           df["buy_signal"] = df["buy_signal"].fillna(0)
+
+           # Exit signal
+           df["sell_signal"] = np.where(
+               (df["RSI_5"].shift(1) > 40)
+               & (df["ticker"] == df["ticker"].shift(1)),
+               1,
+               0
+           )
+
+           # Time stop
+           df["buy_date"] = df.index
+           df["sell_signal_2"] = np.where(
+               (df["buy_signal"].shift(10) != 0) & (df["ticker"] == df["ticker"].shift(10)),
+               df["buy_date"].shift(10).dt.date,
+               pd.to_datetime("2000-01-01"),
+           )
+
+           # Initializing portfolio
+           portfolio = Portfolio(
+               df,
+               EquityModel.TOTAL_EQUITY,
+               PositionSizing.EQUAL_UNIT,
+               initial_capital=int(1e5),
+               size=10,
+           )
+
+           df.reset_index(inplace=True)
+           # Backtesting starts here!
+           for index, frame in df.groupby("date"):
+               days_count = pd.Timedelta(days=frame.index[0])
+               frame.set_index("ticker", inplace=True)
+
+               for ticker, info in portfolio.holding():
+                   if frame.loc[ticker, "sell_signal_2"] == info["open_date"].date():  # 10 days sell signal
+                       portfolio.sell(
+                           ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                       )
+                   elif frame.loc[ticker, "sell_signal"] == 1:
+                       portfolio.sell(
+                           ticker, Reason.EXIT, index, frame.loc[ticker, "open"], days_count
+                       )
+
+               # Sort remaining stocks that have buy signals by momentum (High to low)
+               frame = frame.loc[
+                           (frame["buy_signal"].values != 0) & (~frame.index.isin(portfolio.list()))
+                           ].sort_values("buy_signal", ascending=False)[: portfolio.free()]
+
+               # Retrieve portfolio allocation
+               for item in frame.index.to_list():
+                   portfolio.buy(
+                       item,
+                       index,
+                       frame.loc[item, "open"],
+                       days_count
+                   )
+
+           # Measuring performance
+           performance = Performance(portfolio, show=False)
+           performance.objective_function(need_print=False)
+           performance.performance_metric(need_print=False)
+           # Step 4. Add performance results to result_aggregator
+           result_aggregator.add_result(portfolio, performance, first_day, last_day)
+
+       # Step 5. Save aggregated results
+       result_aggregator.save_result("all_results.csv", need_print=True)
+
+#####################################
+Import performance aggregator library
+#####################################
+- Import the library at the beginning of Python script
+
+.. code-block:: python
+   :linenos:
+
+   from optimus.backtesting.performance_aggregator import PerformanceAggregator
+
+####################################
+Initialize a performance aggregator
+####################################
+- Initialize and assign to a variable outside of the loops
+
+.. code-block:: python
+   :linenos:
+
+    result_aggregator = PerformanceAggregator()
+
+###################################################
+Get the first and last date of each year dataframe
+###################################################
+- Assign the first and last row index (date) to variables for each loop
+
+.. code-block:: python
+   :linenos:
+
+   first_day = df.index[0]
+   last_day = df.index[-1]
+
+#########################################################
+Add performance results to result_aggregator in each loop
+#########################################################
+- Add the performance results after being generated with portfolio, performance, first_day and last_day
+
+.. code-block:: python
+   :linenos:
+
+   result_aggregator.add_result(portfolio, performance, first_day, last_day)
+
+########################
+Save aggregated results
+########################
+- Export the aggregated results to csv outside of loop
+
+.. code-block:: python
+   :linenos:
+
+   result_aggregator.save_result("all_results.csv", need_print=True)

@@ -60,6 +60,22 @@ optimus.backtesting.tick_data module
    :undoc-members:
    :show-inheritance:
 
+optimus.backtesting.visualizer module
+-------------------------------------
+
+.. automodule:: optimus.backtesting.visualizer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+optimus.backtesting.performance_aggregator module
+-------------------------------------------------
+
+.. automodule:: optimus.backtesting.performance_aggregator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
